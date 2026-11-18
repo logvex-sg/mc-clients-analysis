@@ -1,0 +1,46 @@
+{
+  "id": "018",
+  "name": "mavi-chivas-infostealer",
+  "title": "mavi-chivas.exe — Windows infostealer disguised as a Minecraft mod (Discord/Dropbox)",
+  "status": "confirmed-malicious",
+  "confidence": "high",
+  "verification": "osint-only (public ANY.RUN sandbox analysis; sample hash available; not independently re-verified)",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "osint-only; no sample obtained or executed",
+  "family": "mavi-chivas infostealer",
+  "primary_impact": [
+    "credential-theft",
+    "session-cookie-theft",
+    "data-exfiltration"
+  ],
+  "sample": {
+    "filename": "mavi-chivas.exe",
+    "sha256": "29269FA6CF19C9114B15D13044B64903C33BC382007EC85FAD8A5277711946F4",
+    "type": "Windows PE (native .exe, not a JAR)"
+  },
+  "distribution": {
+    "vector": "file presented as a Minecraft mod, shared in a Discord server",
+    "host": "Dropbox"
+  },
+  "capabilities": {
+    "delivery": "browser downloads from Dropbox; victim executes",
+    "execution": "cmd.exe /d /s /c + PowerShell x6 with -EncodedCommand (double Base64)",
+    "evasion": "Add-Type compiles a P/Invoke helper that hides the console window (ShowWindow 0)",
+    "theft": "browser credentials, session cookies, browser history",
+    "exfil": "connection to Discord"
+  },
+  "c2": {
+    "channel": "Discord",
+    "delivery_url": "hxxps://www.dropbox[.]com/scl/fi/zprhs69ehmegj90tnjdfn/mavi-chivas.exe"
+  },
+  "mitre_attack": ["T1059.001", "T1027.010"],
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  },
+  "sources": [
+    "https://github.com/guisosi/mavi-chivas"
+  ]
+}

@@ -1,0 +1,10 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | string | file | process | registry | class
+# SOURCE: OSINT (PaperMC 2022 malware announcement + community scanners). Not independently verified.
+url,https://forums.papermc.io/threads/malware-announcement.529/,official PaperMC announcement (2022-09-29)
+class,Updater,reported backdoor class name in infected plugins
+string,java/lang/Runtime.getRuntime().exec(),stage-2 execution primitive
+string,java/net/URL,stage-2 download primitive
+file,plugins/*.jar,scan target (server plugins)
+string,MCAntiMalware,community detector (detects 1000+ malicious plugins)
+string,broom,community detector (2022 Updater variant)

@@ -1,0 +1,44 @@
+{
+  "id": "022",
+  "name": "mc-backdoor-plugins",
+  "title": "Minecraft backdoor tooling (plugin injectors and client RAT backdoors)",
+  "status": "dual-use-tooling",
+  "confidence": "high",
+  "verification": "osint-only (project READMEs; not independently re-verified)",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "osint-only; no sample obtained or executed",
+  "family": "Minecraft backdoor tooling",
+  "primary_impact": [
+    "remote-code-execution",
+    "backdoor",
+    "session-token-theft"
+  ],
+  "tools": {
+    "OpenBukloit": {
+      "url": "https://github.com/VoxelHax/OpenBukloit",
+      "type": "Bukkit/Spigot/Paper plugin backdoor injector",
+      "mechanism": "patches a legit plugin JAR, adds inject(JavaPlugin) class run after onEnable; camouflage engine",
+      "builtin_backdoor": "chat key triggers console command execution (e.g. 'hackthisserver op Name')"
+    },
+    "qqBackdoor": {
+      "url": "https://github.com/qqTechnologies/qqBackdoor",
+      "type": "client-side cheat-client RAT backdoor (tweaker/bootstrapper)",
+      "mechanism": "injects into cheat client; operator runs a socket server"
+    },
+    "LeuxBackdoor": {
+      "url": "https://github.com/accessmodifier364/LeuxBackdoor",
+      "type": "client mod aimed at anarchy servers"
+    }
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  },
+  "sources": [
+    "https://github.com/VoxelHax/OpenBukloit",
+    "https://github.com/qqTechnologies/qqBackdoor",
+    "https://github.com/accessmodifier364/LeuxBackdoor"
+  ]
+}

@@ -1,0 +1,10 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | string | file | process | registry | class
+# SOURCE: OSINT (guisosi/mavi-chivas, ANY.RUN sandbox). Not independently verified.
+sha256,29269FA6CF19C9114B15D13044B64903C33BC382007EC85FAD8A5277711946F4,mavi-chivas.exe
+url,hxxps://www.dropbox[.]com/scl/fi/zprhs69ehmegj90tnjdfn/mavi-chivas.exe,delivery host (Dropbox)
+process,cmd.exe /d /s /c "Powershell -NoLogo -NonInteractive -NoProfile -ExecutionPolicy Bypass -Encoded <base64>,obfuscated launcher (x6)
+process,csc.exe /noconfig /fullpaths @"C:\Users\<user>\AppData\Local\Temp\<random>.cmdline,Add-Type compile of console-hiding helper
+string,ShowWindow,console window hiding (P/Invoke helper)
+string,waitfor,string artefact (ADS / staging)
+file,%TEMP%\,temp working directory

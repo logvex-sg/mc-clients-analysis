@@ -1,0 +1,33 @@
+{
+  "id": "020",
+  "name": "lunar-client-stealer",
+  "title": "Lunar Client / launcher token-stealer payloads (source-read PoCs)",
+  "status": "confirmed-malicious",
+  "confidence": "high",
+  "verification": "osint-only (published sources read directly; not executed)",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "osint-only; sources read, not executed",
+  "family": "Client token stealers (Lunar / launcher_profiles)",
+  "primary_impact": [
+    "session-token-theft",
+    "credential-theft"
+  ],
+  "capabilities": {
+    "lunar_accounts_theft": "%USERPROFILE%\\.lunarclient\\settings\\game\\accounts.json -> Discord webhook",
+    "session_object_theft": "mc.getSession().getToken() posted as JSON with uuid/ip",
+    "launcher_profiles_theft": "%APPDATA%\\.minecraft\\launcher_profiles.json streamed over a socket",
+    "token_validation_backend": "POST sessionserver.mojang.com/session/minecraft/join (204 = valid)",
+    "disguise": "fake 'version disabled, please update' chat message"
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  },
+  "sources": [
+    "https://github.com/tsukilo/LunarClientTokenStealer",
+    "https://github.com/Diliard/R.A.T",
+    "https://github.com/funnydude1668/minecraft-token-stealer"
+  ]
+}

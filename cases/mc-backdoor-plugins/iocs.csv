@@ -1,0 +1,10 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | string | file | process | registry | class
+# SOURCE: OSINT (project READMEs). Not independently verified.
+string,OpenBukloit,plugin backdoor injector
+string,public static void inject(JavaPlugin args),OpenBukloit injected backdoor entrypoint
+string,hackthisserver,OpenBukloit builtin backdoor chat key (example)
+string,camouflage engine,OpenBukloit anti-detection
+string,qqBackdoor,client cheat-client RAT backdoor
+string,LeuxBackdoor,client-side backdoor mod (anarchy servers)
+file,plugins/*.jar,plugin backdoor injection target

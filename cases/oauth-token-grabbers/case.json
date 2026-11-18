@@ -1,0 +1,41 @@
+{
+  "id": "021",
+  "name": "oauth-token-grabbers",
+  "title": "OAuth / Microsoft-token grabbers (Minecraft account takeover via phishing)",
+  "status": "confirmed-malicious",
+  "confidence": "high",
+  "verification": "osint-only (published source read directly; not executed)",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "osint-only; source read, not executed",
+  "family": "Minecraft OAuth token grabber",
+  "primary_impact": [
+    "account-takeover",
+    "session-token-theft",
+    "persistence"
+  ],
+  "capabilities": {
+    "oauth_phishing": "attacker-controlled Azure app 'Verification Bot'",
+    "token_chain": [
+      "login.live.com/oauth20_token.srf",
+      "user.auth.xboxlive.com/user/authenticate",
+      "xsts.auth.xboxlive.com/xsts/authorize",
+      "api.minecraftservices.com/authentication/login_with_xbox",
+      "api.minecraftservices.com/minecraft/profile"
+    ],
+    "persistence": "obtains a refresh token -> can mint new access tokens until consent revoked"
+  },
+  "c2": {
+    "callback_host": "d-na.herokuapp.com",
+    "collector": "http://d-na.kr/oauth.php"
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  },
+  "sources": [
+    "https://github.com/polincracy/Minecraft-oAuth-Grabber-MOG-",
+    "https://github.com/cev-api/MC-Token-Suite"
+  ]
+}

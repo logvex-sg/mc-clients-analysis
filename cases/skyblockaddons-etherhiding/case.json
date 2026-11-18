@@ -1,0 +1,61 @@
+{
+  "id": "016",
+  "name": "skyblockaddons-etherhiding",
+  "title": "SkyblockAddons-26.2.jar EtherHiding trojan (Fabric session stealer + Ethereum dead-drop C2)",
+  "status": "confirmed-malicious",
+  "confidence": "high",
+  "verification": "osint-only (published static analysis; sample hash available; not independently re-verified)",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "osint-only; no sample obtained or executed",
+  "family": "EtherHiding / Weedhack-Majanito",
+  "primary_impact": [
+    "session-token-theft",
+    "credential-theft",
+    "remote-code-execution",
+    "data-exfiltration"
+  ],
+  "sample": {
+    "filename": "SkyblockAddons-26.2.jar",
+    "size_bytes": 1592758,
+    "sha256": "85ccb86cf78c138c55eda930a3d577f7d5891f65f51dfa785acc3d1a1f7b5efa",
+    "sha1": "d3fa13c4326cc2a618ec1112a2cfaef675210f17",
+    "md5": "b3353010af83c489a246c3f7b0ad30c0",
+    "type": "Fabric mod (JAR)",
+    "real_mod_id": "toggle-sprint-display",
+    "lure": "filename impersonates the unrelated SkyBlockAddons mod"
+  },
+  "capabilities": {
+    "bootstrap": "injected Fabric Mixin at HEAD of net.minecraft.client.Minecraft.run",
+    "credential_theft": "user.getAccessToken() / getProfileId() / getUser()",
+    "stage2": "in-memory JAR from C2, custom ClassLoader, invoke com.example.Main.initialize(String)",
+    "c2_resolution": "Ethereum smart-contract dead-drop (EtherHiding) + DNS-over-HTTPS",
+    "decoy": "vault.bin (1.5MB padding) + integrity.bin in a randomly-named package"
+  },
+  "c2": {
+    "domains": ["systemnotifier.st"],
+    "urls": ["https://systemnotifier.st/api/static/loading"],
+    "doh_resolvers": ["1.1.1.1", "8.8.8.8"],
+    "blockchain": {
+      "network": "ethereum-mainnet",
+      "contract": "0x9044f5762e43b23ba91d124b51a045f1b51da652",
+      "selector": "0x1f1bd692",
+      "selector_signature": "text()",
+      "creator": "0x34d7fb0cdD43F39DdbDbe85cD6e0688B7596e665",
+      "creation_tx": "0xda4cf534054d992967430e9da3352b2adcfe9f2a7f58085f5c05b211671e16e0"
+    }
+  },
+  "mitre_attack": [
+    "T1204.002", "T1036.005", "T1027", "T1027.009", "T1140", "T1620",
+    "T1033", "T1528", "T1552", "T1005", "T1071.001", "T1071.004",
+    "T1573", "T1102.001", "T1568", "T1090", "T1105", "T1657"
+  ],
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  },
+  "sources": [
+    "https://github.com/Kagias/skyblockaddons-trojan-analysis"
+  ]
+}

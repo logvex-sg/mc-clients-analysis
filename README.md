@@ -1,7 +1,9 @@
 # malware-analysis-SOBERCLIENT
 
-Malware analysis case files. Current focus: **account stealers** (Minecraft/Microsoft session
-token theft, browser credential grabbers, and the droppers that deliver them).
+Malware analysis case files. Current focus: **Minecraft account stealers** (Minecraft/Microsoft
+session-token theft, browser credential grabbers, server-plugin backdoors, and the droppers/loaders
+that deliver them). 23 cases: 10 analysed from local samples (Cluster A) and 13 written from public
+OSINT (Cluster B).
 
 ## Layout
 
@@ -39,8 +41,16 @@ consolidated report.
 | 013 | Mercurial Grabber | confirmed-malicious (public) | [cases/mercurial-grabber/REPORT.md](cases/mercurial-grabber/REPORT.md) |
 | 014 | Session-stealer mod PoCs / kits | proof-of-concept | [cases/mc-session-stealer-poc/REPORT.md](cases/mc-session-stealer-poc/REPORT.md) |
 | 015 | DonutSMP client ecosystem | mixed (context) | [cases/donutsmp-ecosystem/REPORT.md](cases/donutsmp-ecosystem/REPORT.md) |
+| 016 | SkyblockAddons EtherHiding trojan | confirmed-malicious (public, hash) | [cases/skyblockaddons-etherhiding/REPORT.md](cases/skyblockaddons-etherhiding/REPORT.md) |
+| 017 | Updater malware (2022 plugin campaign) | confirmed-malicious (public) | [cases/updater-campaign-2022/REPORT.md](cases/updater-campaign-2022/REPORT.md) |
+| 018 | mavi-chivas infostealer (fake mod) | confirmed-malicious (public, hash) | [cases/mavi-chivas-infostealer/REPORT.md](cases/mavi-chivas-infostealer/REPORT.md) |
+| 019 | LoggerMod (login-password stealer) | confirmed-malicious (public, source) | [cases/logger-mod-loginstealer/REPORT.md](cases/logger-mod-loginstealer/REPORT.md) |
+| 020 | Lunar Client / launcher token stealers | confirmed-malicious (public, source) | [cases/lunar-client-stealer/REPORT.md](cases/lunar-client-stealer/REPORT.md) |
+| 021 | OAuth / Microsoft-token grabbers | confirmed-malicious (public, source) | [cases/oauth-token-grabbers/REPORT.md](cases/oauth-token-grabbers/REPORT.md) |
+| 022 | Server backdoor tooling | dual-use tooling | [cases/mc-backdoor-plugins/REPORT.md](cases/mc-backdoor-plugins/REPORT.md) |
+| 023 | Defensive ecosystem (scanners/hardening) | defensive tooling | [cases/anti-rat-defenses/REPORT.md](cases/anti-rat-defenses/REPORT.md) |
 
-Cases 011–015 were written from **public research** (no sample obtained or executed) and are
+Cases 011–023 were written from **public research** (no sample obtained or executed) and are
 **not independently re-verified**. See [cases/OSINT.md](cases/OSINT.md) for how they relate to the
 DonutSMP campaign.
 

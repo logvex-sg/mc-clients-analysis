@@ -1,0 +1,50 @@
+{
+  "id": "023",
+  "name": "anti-rat-defenses",
+  "title": "Defensive ecosystem: Minecraft malware scanners and token-hardening mods",
+  "status": "defensive-tooling",
+  "confidence": "high",
+  "verification": "osint-only (project documentation; tools not installed or run here)",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "osint-only; no tool installed or executed",
+  "family": "Defensive tooling",
+  "primary_impact": ["detection", "hardening"],
+  "scanners": {
+    "MCAntiMalware": {"url": "https://github.com/OpticFusion1/MCAntiMalware", "lang": "Java", "note": "1000+ malicious plugins"},
+    "broom": {"url": "https://github.com/berrybyte-net/broom", "lang": "Go", "note": "2022 Updater variant"},
+    "JarMalwareScanner": {"url": "https://github.com/0xresetti/JarMalwareScanner", "lang": "C#", "note": "8 variants incl. 'DonutSMP Stealer' and 'Weedhack'"},
+    "mcrataway": {"url": "https://github.com/Attackwave/mcrataway", "lang": "Python", "note": "mods/resourcepacks/datapacks/shaders"},
+    "jarsec": {"url": "https://github.com/tinywifi/jarsec", "lang": "Claude Code skill", "note": "static + Docker dynamic"},
+    "skyblockaddons-yara": {"url": "https://github.com/Kagias/skyblockaddons-trojan-analysis", "lang": "YARA", "note": "EtherHiding family (case 016)"},
+    "End-Decompiler": {"url": "https://github.com/JusticeClient/End-Decompiler", "note": "rat detector / file analysis"}
+  },
+  "hardening_mods": {
+    "TokenProtector": {"url": "https://github.com/cev-api/Token-Protector"},
+    "AntiRAT": {"url": "https://github.com/lyn1dev/AntiRAT"},
+    "NoMoreRAT": {"url": "https://github.com/PL-VIP/NMR-No-More-RAT"},
+    "anti-ssid-stealer": {"url": "https://github.com/planetofangels/anti-ssid-stealer"}
+  },
+  "corroboration": {
+    "note": "Third-party scanners independently name the campaign catalogued here",
+    "evidence": [
+      "0xresetti/JarMalwareScanner variant 'DonutSMP Stealer': MC session theft via reflection getMethod/invoke (cases 001-010)",
+      "0xresetti/JarMalwareScanner variant 'Weedhack' (case 011)"
+    ]
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  },
+  "sources": [
+    "https://github.com/OpticFusion1/MCAntiMalware",
+    "https://github.com/berrybyte-net/broom",
+    "https://github.com/0xresetti/JarMalwareScanner",
+    "https://github.com/Attackwave/mcrataway",
+    "https://github.com/tinywifi/jarsec",
+    "https://github.com/cev-api/Token-Protector",
+    "https://github.com/lyn1dev/AntiRAT",
+    "https://github.com/PL-VIP/NMR-No-More-RAT"
+  ]
+}

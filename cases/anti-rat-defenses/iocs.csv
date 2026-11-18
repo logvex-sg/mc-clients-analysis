@@ -1,0 +1,14 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | string | file | process | registry | class
+# SOURCE: OSINT (defensive projects). Not independently verified; tools not run here.
+url,https://github.com/OpticFusion1/MCAntiMalware,scanner (1000+ malicious plugins)
+url,https://github.com/berrybyte-net/broom,scanner (2022 Updater variant)
+url,https://github.com/0xresetti/JarMalwareScanner,scanner (8 variants incl. DonutSMP Stealer / Weedhack)
+url,https://github.com/Attackwave/mcrataway,"scanner (static, pure-Python bytecode)"
+url,https://github.com/tinywifi/jarsec,scanner (static + Docker dynamic)
+url,https://github.com/Kagias/skyblockaddons-trojan-analysis,YARA rule for EtherHiding (case 016)
+url,https://github.com/cev-api/Token-Protector,runtime token hardening
+url,https://github.com/lyn1dev/AntiRAT,runtime behavioural defense (Fabric)
+url,https://github.com/PL-VIP/NMR-No-More-RAT,runtime mod firewall
+string,DonutSMP Stealer,third-party scanner variant name (corroborates cases 001-010)
+string,Weedhack,third-party scanner variant name (corroborates case 011)

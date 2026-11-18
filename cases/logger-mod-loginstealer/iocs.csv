@@ -1,0 +1,10 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | string | file | process | registry | class
+# SOURCE: OSINT (bush1root/LoggerMod source, read directly). Not independently verified.
+class,me/bushroot/logger/log.class,chat/login hook
+class,me/bushroot/logger/webhook/DiscordWebhook.class,Discord webhook exfil client
+class,me/bushroot/logger/Connection.class,mod plumbing
+string,/login /l /reg /register,trigger commands
+string,PASSWORD USER SERVER PING,exfiltrated fields
+string,discord.com/api/webhooks/,exfiltration channel
+string,ВКонтакте,2FA/VK-auth detector

@@ -1,0 +1,13 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | string | file | process | registry | class
+# SOURCE: OSINT (polincracy/Minecraft-oAuth-Grabber-MOG-, cev-api/MC-Token-Suite). Not independently verified.
+url,https://login.live.com/oauth20_token.srf,step 1: OAuth code -> access/refresh token
+url,https://user.auth.xboxlive.com/user/authenticate,step 2: Xbox Live user token
+url,https://xsts.auth.xboxlive.com/xsts/authorize,step 3: XSTS token
+url,https://api.minecraftservices.com/authentication/login_with_xbox,step 4: Minecraft bearer token
+url,https://api.minecraftservices.com/minecraft/profile,step 5: uuid + username
+url,http://d-na.kr/oauth.php,attacker collector endpoint
+domain,d-na.herokuapp.com,attacker OAuth redirect/callback host
+string,Verification Bot,lure Azure app name
+string,XBL3.0 x=,Xbox identity token format
+string,Minecraft-oAuth-Grabber,kit name

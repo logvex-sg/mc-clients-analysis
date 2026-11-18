@@ -1,0 +1,45 @@
+{
+  "id": "017",
+  "name": "updater-campaign-2022",
+  "title": "Updater malware / 29-09-2022 Minecraft plugin backdoor campaign",
+  "status": "confirmed-malicious",
+  "confidence": "high",
+  "verification": "osint-only (PaperMC announcement + community scanners; not independently re-verified)",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "osint-only; no sample obtained or executed",
+  "family": "Updater (2022 plugin backdoor)",
+  "primary_impact": [
+    "remote-code-execution",
+    "backdoor",
+    "supply-chain"
+  ],
+  "distribution": {
+    "vector": "backdoored server plugins distributed via legitimate marketplaces/builds",
+    "date": "2022-09-29",
+    "target": "Bukkit/Spigot/Paper plugins"
+  },
+  "sample": {
+    "filename": null,
+    "sha256": null,
+    "note": "no single sample; documented from public announcement + scanners"
+  },
+  "capabilities": {
+    "backdoor_class": "injected into legitimate plugin",
+    "stage2": "downloads + executes a remote second stage (dropper)"
+  },
+  "detection_tools": [
+    "https://github.com/OpticFusion1/MCAntiMalware",
+    "https://github.com/berrybyte-net/broom"
+  ],
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  },
+  "sources": [
+    "https://forums.papermc.io/threads/malware-announcement.529/",
+    "https://github.com/OpticFusion1/MCAntiMalware",
+    "https://github.com/berrybyte-net/broom"
+  ]
+}

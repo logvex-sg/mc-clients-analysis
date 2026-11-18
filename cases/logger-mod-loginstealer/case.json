@@ -1,0 +1,36 @@
+{
+  "id": "019",
+  "name": "logger-mod-loginstealer",
+  "title": "LoggerMod — Minecraft Forge mod that steals server login passwords to a Discord webhook",
+  "status": "confirmed-malicious",
+  "confidence": "high",
+  "verification": "osint-only (published source read directly; not executed)",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "osint-only; source read, not executed",
+  "family": "LoggerMod / chat-login stealer",
+  "primary_impact": [
+    "credential-theft",
+    "data-exfiltration"
+  ],
+  "sample": {
+    "filename": "LoggerMod (Forge 1.12.2)",
+    "sha256": null,
+    "type": "Forge mod source"
+  },
+  "capabilities": {
+    "login_password_theft": "/login /l /reg /register -> sentences[1] exfiltrated",
+    "all_chat_logging": "cfg.logAll forwards every chat line",
+    "twofa_detector": "flags server VK-Auth prompt (ВКонтакте)",
+    "session_access": "Minecraft.getMinecraft().getSession().getUsername()",
+    "exfil": "Discord webhook"
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  },
+  "sources": [
+    "https://github.com/bush1root/LoggerMod"
+  ]
+}

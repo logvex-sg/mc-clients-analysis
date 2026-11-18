@@ -1,0 +1,9 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | string | file | process | registry | class
+# SOURCE: OSINT (tsukilo/LunarClientTokenStealer, Diliard/R.A.T, funnydude1668/minecraft-token-stealer). Not independently verified.
+file,%USERPROFILE%\.lunarclient\settings\game\accounts.json,Lunar Client account store (target)
+file,%APPDATA%\.minecraft\launcher_profiles.json,vanilla launcher profiles (target)
+url,https://checkip.amazonaws.com/,victim IP lookup
+url,https://sessionserver.mojang.com/session/minecraft/join,stolen-token validation (204 = valid)
+url,https://discord.com/api/webhooks/,exfiltration channel
+string,This version of SBE has been disabled due to a security issue,decoy chat message

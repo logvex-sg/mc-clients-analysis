@@ -71,3 +71,41 @@ Session s = Minecraft.getMinecraft().getSession();
 - Session-stealer PoC — https://github.com/shurp3/MC-Session-Stealer
 - TokenProtector (defence) — https://github.com/cev-api/Token-Protector
 - DonutSMP ecosystem — https://github.com/pushykiller69-bot/exordium-client, https://github.com/realnnpg/glazed
+
+## 7. Cluster-B expansion (cases 016–023)
+
+A second OSINT pass (also via the GitHub API) added eight more cases and **the key modern data point**:
+
+- **016 — SkyblockAddons "EtherHiding" trojan.** A **Weedhack/Majanito-family** Fabric mod
+  (SHA-256 `85ccb86c…`) that resolves its C2 from an **Ethereum smart contract** (`0x9044f576…`,
+  selector `0x1f1bd692`) and loads an in-memory stage-2 JAR. This is the **active evolution of the
+  exact architecture we inferred in SoberClient (001)** and confirms the Cluster-A threat model.
+- **017 — Updater malware (29-09-2022)** — the plugin-backdoor campaign that started the modern
+  "Minecraft JAR malware" ecosystem (detectors: `MCAntiMalware`, `broom`).
+- **018 — mavi-chivas.exe** — a Windows infostealer disguised as a mod, delivered Discord→Dropbox
+  (same social-engineering model as Cluster A, different file type).
+- **019 — LoggerMod** — a mod that steals **server login passwords** to a Discord webhook.
+- **020 — Lunar Client / launcher token stealers** — PoCs that scrape `accounts.json` /
+  `launcher_profiles.json` and **validate stolen tokens** against Mojang.
+- **021 — OAuth / Microsoft-token grabbers** — phishing the full Microsoft→Xbox→XSTS→Minecraft
+  chain to mint a **refresh token** (persistent takeover).
+- **022 — Server backdoor tooling** (OpenBukloit, qqBackdoor, LeuxBackdoor) — the offensive supply.
+- **023 — Defensive ecosystem** — scanners and token-hardening mods.
+
+**Independent corroboration (important):** the third-party scanner `0xresetti/JarMalwareScanner`
+ships variant signatures literally named **"DonutSMP Stealer"** (described as *MC session theft via
+reflection `getMethod`/`invoke`*) and **"Weedhack"**. That is an outside confirmation that the
+campaign catalogued here is recognised in the wild.
+
+### Updated family table
+
+| | Cluster A (DonutSMP) | EtherHiding (016) | fractureiser (012) | mavi-chivas (018) | OAuth (021) |
+|---|---|---|---|---|---|
+| Entry | free client JAR | trojanised mod JAR | infected mod/plugin | fake "mod" `.exe` | phishing MS login |
+| Prize | session token | session token | browser/Discord/MSA | browser credentials | **refresh token** |
+| C2 | encrypted strings | **Ethereum dead-drop + DoH** | `files-8ie.pages.dev` | Discord | collector site |
+| Persistence | (loader) | in-memory stage-2 | systemd/.bat | none | refresh token |
+
+The through-line is unchanged: **a Minecraft player is tricked into running or authorising something,
+and a live account token is stolen.** Case 016 shows the technique is now **blockchain-hardened**,
+which is why detection must be **behavioural** (session access + outbound C2), not domain-based.

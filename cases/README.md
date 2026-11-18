@@ -57,6 +57,14 @@ tools/                 <- shared analysis scripts (deobfuscators, parsers)
 | 013 | Mercurial Grabber | confirmed-malicious (public) | session/browser credential theft | 2026-11-18 | [cases/mercurial-grabber/REPORT.md](mercurial-grabber/REPORT.md) |
 | 014 | Session-stealer mod PoCs / kits | tooling / proof-of-concept | session-token theft | 2026-11-18 | [cases/mc-session-stealer-poc/REPORT.md](mc-session-stealer-poc/REPORT.md) |
 | 015 | DonutSMP client ecosystem (OSINT) | mixed (research) | n/a — ecosystem map | 2026-11-18 | [cases/donutsmp-ecosystem/REPORT.md](donutsmp-ecosystem/REPORT.md) |
+| 016 | SkyblockAddons EtherHiding trojan | confirmed-malicious (public, hash) | session theft, EtherHiding C2, RCE | 2026-11-18 | [cases/skyblockaddons-etherhiding/REPORT.md](skyblockaddons-etherhiding/REPORT.md) |
+| 017 | Updater malware (2022 plugin campaign) | confirmed-malicious (public) | plugin backdoor, RCE, supply-chain | 2026-11-18 | [cases/updater-campaign-2022/REPORT.md](updater-campaign-2022/REPORT.md) |
+| 018 | mavi-chivas infostealer (fake mod) | confirmed-malicious (public, hash) | browser credential/cookie theft | 2026-11-18 | [cases/mavi-chivas-infostealer/REPORT.md](mavi-chivas-infostealer/REPORT.md) |
+| 019 | LoggerMod (login-password stealer) | confirmed-malicious (public, source) | server login-password theft | 2026-11-18 | [cases/logger-mod-loginstealer/REPORT.md](logger-mod-loginstealer/REPORT.md) |
+| 020 | Lunar Client / launcher token stealers | confirmed-malicious (public, source) | client-token theft | 2026-11-18 | [cases/lunar-client-stealer/REPORT.md](lunar-client-stealer/REPORT.md) |
+| 021 | OAuth / Microsoft-token grabbers | confirmed-malicious (public, source) | account takeover, refresh-token persistence | 2026-11-18 | [cases/oauth-token-grabbers/REPORT.md](oauth-token-grabbers/REPORT.md) |
+| 022 | Server backdoor tooling | dual-use tooling | plugin/client backdoor, RCE | 2026-11-18 | [cases/mc-backdoor-plugins/REPORT.md](mc-backdoor-plugins/REPORT.md) |
+| 023 | Defensive ecosystem (scanners/hardening) | defensive tooling | detection & hardening | 2026-11-18 | [cases/anti-rat-defenses/REPORT.md](anti-rat-defenses/REPORT.md) |
 
 > **Cluster B caveat:** these cases were written from **public, third-party research and
 > repositories** (OSINT), not from samples we analysed. No Cluster-B sample was downloaded or
