@@ -1,0 +1,13 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | blockchain | string | file | process | registry | class
+sha256,d307a508e6f942f42402ee417fa8e6dd367678878a7431f5eef6e8f804ab8889,Corzclient-1.21.11.jar (sample)
+sha256,5a781d8772378a94bb5efed46b5e34de51fe5b14644928c3d3f7f1ce078994bf,embedded class-key table cb2aa3b5-d080-449c-94f3-911cc0b70a06.bin
+sha256,11d2eb2ce6b7bd514d4e81e52a413d22f1c7847defb927c06f8523cdd5f4531f,embedded native native/99571f71427e3b19/r
+sha256,0896e34bc4c0495a7f3ac367fabf083d0aa0062f72aba63def6ff99ac04f50d0,embedded native native/99571f71427e3b19/s1
+sha256,362ef6b3ca6f94af45b7f8cba36e132a00919845fb451e5c8de826afba58fe56,embedded native native/99571f71427e3b19/bk
+file,cb2aa3b5-d080-449c-94f3-911cc0b70a06.bin,root-level class-key/anti-tamper table
+class,a.class,all-accepting X509TrustManager (TLS bypass)
+domain,www.donutsmpclients.com,distribution hub
+domain,file.garden,download file host
+domain,discord.com,invite discord.com/invite/donutsmpclients
+url,https://file.garden/auoc8y0R41ISH5sk/Corzclient-1.21.11.jar,download URL

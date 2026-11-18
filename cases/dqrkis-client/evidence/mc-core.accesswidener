@@ -1,0 +1,10 @@
+accessWidener	v2	intermediary
+accessible	field	net/minecraft/class_1661	field_7545	I
+mutable	field	net/minecraft/class_1661	field_7545	I
+accessible	field	net/minecraft/class_1661	field_7547	Lnet/minecraft/class_2371;
+accessible	field	net/minecraft/class_310	field_1752	I
+mutable	field	net/minecraft/class_310	field_1752	I
+accessible	field	net/minecraft/class_304	field_1654	Lnet/minecraft/class_3675$class_306;
+accessible	field	net/minecraft/class_304	field_1653	Z
+mutable	field	net/minecraft/class_304	field_1653	Z
+accessible	field	net/minecraft/class_419	field_44552	Lnet/minecraft/class_8667;

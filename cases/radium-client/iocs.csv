@@ -1,0 +1,14 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | blockchain | string | file | process | registry | class
+sha256,a8f92a92752cc3d8b643ca9452aa86b5ba8b254ab5c69666853742c0fcf3147e,radiumclient-1.21.11.jar (sample)
+sha256,58b95f6a726a2020bf742a248de73bf71bc34423250d44ea4b5830f998475ea5,embedded class-key table a0a84a3b-8398-4eb3-a665-fb9ec67a0689.bin
+file,a0a84a3b-8398-4eb3-a665-fb9ec67a0689.bin,root-level class-key/anti-tamper table
+class,g.class,all-accepting X509TrustManager (TLS bypass)
+domain,www.donutsmpclients.com,distribution hub
+domain,file.garden,download file host
+domain,discord.com,invite discord.com/invite/donutsmpclients
+url,https://file.garden/auoc8y0R41ISH5sk/radiumclient-1.21.11.jar,download URL
+url,https://dpaste.com/api/v2/,cleartext endpoint
+url,https://api.minecraftservices.com/minecraft/profile/lookup/name/,cleartext endpoint
+url,https://accounts.spotify.com,cleartext endpoint
+string,payfake-licenses.noahmenkyna667.workers.dev,licence/HWID backend (if present)

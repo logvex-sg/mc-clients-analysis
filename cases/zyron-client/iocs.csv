@@ -1,0 +1,13 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | blockchain | string | file | process | registry | class
+sha256,7483230638024e0bd1ef0ead0fb864b77be7e908e19c7b43e2710576f332a08b,zyronclient-1.21.11.jar (sample)
+sha256,1eb9398c895ac7b721ac28bd7ac0e0d3e969cc953da28a6c8a7fc81c4f1a01c4,embedded class-key table 760db143-3d2b-4447-bfbb-6af9306e5161.bin
+file,760db143-3d2b-4447-bfbb-6af9306e5161.bin,root-level class-key/anti-tamper table
+class,c.class,all-accepting X509TrustManager (TLS bypass)
+domain,www.donutsmpclients.com,distribution hub
+domain,file.garden,download file host
+domain,discord.com,invite discord.com/invite/donutsmpclients
+url,https://file.garden/auoc8y0R41ISH5sk/zyronclient-1.21.11.jar,download URL
+url,https://discord.com/api/webhooks/...,cleartext endpoint
+url,https://i.scdn.co/image/,cleartext endpoint
+string,payfake-licenses.noahmenkyna667.workers.dev,licence/HWID backend (if present)

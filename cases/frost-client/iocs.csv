@@ -1,0 +1,24 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | blockchain | string | file | process | registry | class
+sha256,975cbb120e1c5d2d479f273af931c5a1667833ad8324470c482a06abb2181b3a,frostclient-1.21.11.jar (sample)
+sha256,ba4cbc4ac112193a7aea3b9fbf0247a50ef4129a89b9dff3b2a42971b59c063d,native/9a3bdf6a8e9e1b13/x86_64-windows (JNI agent)
+sha256,3c3547fdb39dc73d0715c77327b1294be7500c1867724a654419699c8a43dd24,assets/frost/native/mutyx_client.dll
+sha256,e7e727209d87b260bb6b20549789f069d1a1577bb9df15d47e4f50abc66b6d99,embedded class-key table 5fecbcdc-b7c2-4f98-9902-09ff6bb0c1b3.bin
+sha256,a9691fe866111bb4aeb4820070ee644fa86e15182651c1c1ede561c555b79885,embedded class-key table 043d6822-5f51-4cb2-a5a9-eec5b590d8b8.bin
+domain,www.donutsmpclients.com,distribution hub
+domain,file.garden,download file host
+url,https://www.donutsmpclients.com/frost-client,landing page
+url,https://file.garden/auoc8y0R41ISH5sk/frostclient-1.21.11.jar,download URL
+url,https://file.garden/auoc8y0R41ISH5sk/,shared folder hosting 9 client jars
+file,native/9a3bdf6a8e9e1b13/x86_64-windows,native JNI agent at JAR root
+file,assets/frost/native/mutyx_client.dll,NativeClientEngine native library
+file,5fecbcdc-b7c2-4f98-9902-09ff6bb0c1b3.bin,class-key table at JAR root
+file,043d6822-5f51-4cb2-a5a9-eec5b590d8b8.bin,class-key table at JAR root
+class,com.mutyx.a7.s3.a5dca015083,native session/loader protocol bridge
+class,com.mutyx.a7.s3.a5c2d02a9be$2,WebSocket C2 listener
+class,com.mutyx.a7.s3.a5c2d02a9be$3,all-accepting X509TrustManager
+class,com.mutyx.a7.s3.a5c2d02a9be$Json,native JSON parser
+class,com.zenya.engine.NativeClientEngine,native engine entrypoint
+class,608bbebf84695e52.b9a3bdf6a8e9e1b13.49342937c9ef478b,NativeLoader
+string,9a3bdf6a8e9e1b13,native build id / resource directory
+string,[MutyxClient] Cracked :D,console banner

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "soberclient",
+  "version": "1.0.0",
+  "name": "SoberClient",
+  "description": "Base finding and DonutSMP utility client with animated skies. discord.gg/soberclient",
+  "authors": [
+    "Violet"
+  ],
+  "license": "GPL-3.0-only",
+  "icon": "assets/sober/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "dev.sober.SoberClient"
+    ],
+    "main": [
+      "net.fabric.checkNltfjeqlm"
+    ]
+  },
+  "mixins": [
+    "soberclient.mixins.json",
+    "soberclient.features.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.2",
+    "fabric-api": "*",
+    "minecraft": "1.21.11",
+    "java": ">=21"
+  }
+}

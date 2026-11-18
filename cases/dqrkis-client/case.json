@@ -1,0 +1,58 @@
+{
+  "id": "005",
+  "name": "dqrkis-client",
+  "title": "Dqrkis Client (dqrkisclient-1.21.11.jar)",
+  "status": "suspected",
+  "confidence": "high",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "static-only",
+  "family": "SoberClient / DonutSMP free-client campaign",
+  "primary_impact": [
+    "credential-theft",
+    "remote-code-execution",
+    "data-exfiltration"
+  ],
+  "distribution": {
+    "hub": "https://www.donutsmpclients.com",
+    "site": "https://www.donutsmpclients.com (client id: dqrkis-client)",
+    "download": "https://file.garden/auoc8y0R41ISH5sk/dqrkisclient-1.21.11.jar",
+    "file_host_folder": "https://file.garden/auoc8y0R41ISH5sk/",
+    "discord": "https://discord.com/invite/donutsmpclients"
+  },
+  "sample": {
+    "filename": "dqrkisclient-1.21.11.jar",
+    "size": 2166303,
+    "sha256": "63acd66b84fe93afeb496d144de6bba05d19b7325be3862f693726f73a6bd712",
+    "type": "Fabric mod (Java archive)",
+    "mod_id": "template-mod",
+    "mod_name": "Template Mod",
+    "mod_version": "1.0.0",
+    "entrypoints": "main: [com.example.TemplateMod, c]; client: [com.example.compat.a.RenderD]",
+    "class_count": 2142
+  },
+  "capabilities": {
+    "all_accepting_trust_manager": "d.class",
+    "custom_https_client": "raw Socket + manual SNI + SSLContext.init(null, TrustManager[], ...)",
+    "process_execution": "ProcessBuilder",
+    "reflective_class_load": "Class.forName(...) / MethodHandles",
+    "session_accessor": "full Session accessor `ConfigX` (`@Accessor(\"field_1726\")` get + `@Mutable setSession`, plus `setUserApiService`, `setProfileKeys`, `setSocialInteractionsManager`, `setAbuseReportContext`, `setGameProfileFuture`)",
+    "native_payloads": [],
+    "anti_tamper": "root-level class-key table 26b2622c-11d1-4b7b-acae-c178bf87cc6e.bin; class-keyed string decryption"
+  },
+  "obfuscation": {
+    "framework": "per-class encrypted String[] + invokedynamic bootstrap",
+    "key_table_resource": "26b2622c-11d1-4b7b-acae-c178bf87cc6e.bin",
+    "key_table_sha256": "c46f6c9850ed081e3adda0e200ae983b80bc10775bc418a34c5af0c26a6ec3bd"
+  },
+  "c2": {
+    "resolver": "encrypted string-table constant (not recovered statically)",
+    "cleartext_endpoints": [],
+    "transport": "custom raw-socket TLS, certificate validation disabled"
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  }
+}

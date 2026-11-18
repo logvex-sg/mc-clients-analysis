@@ -1,0 +1,12 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | blockchain | string | file | process | registry | class
+sha256,006b391bd4285f1b5ec752ca148b0ca4aa31a138a11879efd170eff3df06bcf9,fakepayclient-1.21.11.jar (sample)
+sha256,a687091f1a1817da720c92be4a606af8d8ed2cef46241ed85b520b4e86087ea2,embedded class-key table 1caabd1a-b736-4053-a683-3983204df2cd.bin
+file,1caabd1a-b736-4053-a683-3983204df2cd.bin,root-level class-key/anti-tamper table
+class,d.class,all-accepting X509TrustManager (TLS bypass)
+domain,www.donutsmpclients.com,distribution hub
+domain,file.garden,download file host
+domain,discord.com,invite discord.com/invite/donutsmpclients
+url,https://file.garden/auoc8y0R41ISH5sk/fakepayclient-1.21.11.jar,download URL
+url,https://payfake-licenses.noahmenkyna667.workers.dev,cleartext endpoint
+string,payfake-licenses.noahmenkyna667.workers.dev,licence/HWID backend (if present)

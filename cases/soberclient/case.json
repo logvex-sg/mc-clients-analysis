@@ -1,0 +1,32 @@
+{
+  "id": "001",
+  "name": "soberclient",
+  "title": "SoberClient — Minecraft utility client with bundled account stealer",
+  "status": "confirmed-malicious",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "static-only; no execution",
+  "family": "SoberClient",
+  "primary_impact": ["credential-theft", "remote-code-execution", "data-exfiltration"],
+  "distribution": {
+    "site": "https://soberclient.xyz/",
+    "download": "https://mxbqrtnpmoaqoaqpvpvg.supabase.co/storage/v1/object/public/downloads/SoberClient.jar?download"
+  },
+  "sample": {
+    "filename": "SoberClient.jar",
+    "size": 32701709,
+    "sha256": "0dad93bc510c690860df1364ba291336e619c8c4ffca26a3c96e57b223f9e1ca",
+    "type": "application/java-archive (Fabric mod)"
+  },
+  "c2": {
+    "resolver": "Polygon eth_call dead-drop",
+    "contract": "0x9c0a507300fd902787bb193d80fca5ce6e1bff9a",
+    "fallback_domain": "thisisafalsepositive.st",
+    "endpoints": ["/shard/prefireMc", "/shard/submitMinecraftLog"]
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  }
+}

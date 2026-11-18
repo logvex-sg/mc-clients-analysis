@@ -1,0 +1,24 @@
+type,value,context
+sha256,0dad93bc510c690860df1364ba291336e619c8c4ffca26a3c96e57b223f9e1ca,SoberClient.jar sample
+domain,soberclient.xyz,distribution site
+domain,www.soberclient.xyz,distribution site (www)
+domain,thisisafalsepositive.st,hardcoded fallback C2 domain
+domain,mxbqrtnpmoaqoaqpvpvg.supabase.co,download hosting (Supabase storage)
+url,https://mxbqrtnpmoaqoaqpvpvg.supabase.co/storage/v1/object/public/downloads/SoberClient.jar?download,jar download
+url,https://<c2>/shard/prefireMc,check-in beacon (POST)
+url,https://<c2>/shard/submitMinecraftLog,exfiltration endpoint (POST)
+url,https://<c2>/cdn/v2/9f4e7a2c1b8d.png,fallback staging path
+url,https://discord.gg/soberclient,operator Discord invite
+blockchain,polygon:0x9c0a507300fd902787bb193d80fca5ce6e1bff9a,eth_call dead-drop C2 resolver
+string,4b33001c-a943-448a-bbd6-f01cf4d51040,hardcoded operator user id
+string,Default,hardcoded operator tag
+file,%LOCALAPPDATA%\Microsoft\Windows\NtProfileIndex,stage-2 working directory
+file,%LOCALAPPDATA%\Microsoft\Windows\NtProfileIndex\AppHost\main.py,stage-2 stealer script
+file,%LOCALAPPDATA%\Microsoft\Windows\NtProfileIndex\_stealer.log,stealer log
+file,_spawn.log,detached relaunch log
+process,python.exe AppHost\main.py -u --env <..> --tag <..> --mcInfo <..> --prefireId <..>,stage-2 stealer process
+class,net.fabric.checkNltfjeqlm,Fabric main entrypoint (malicious)
+class,net.fabric.YnjcXePczS,jar Main-Class (malicious launcher)
+class,net.fabric.grsq_myprv_xx_bdxy,dropper/loader
+class,net.fabric.sajxwzz,custom HTTP client + trust-all TLS
+class,net.fabric.lpt_twqemj,Minecraft session token thief

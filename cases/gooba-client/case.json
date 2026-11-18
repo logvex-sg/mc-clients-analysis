@@ -1,0 +1,56 @@
+{
+  "id": "002",
+  "name": "gooba-client",
+  "title": "Gooba Client (Goobaclient-1.21.11.jar)",
+  "status": "suspected",
+  "confidence": "high",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "static-only",
+  "family": "SoberClient / DonutSMP free-client campaign",
+  "primary_impact": ["credential-theft", "remote-code-execution", "data-exfiltration"],
+  "distribution": {
+    "site": "https://www.donutsmpclients.com/gooba-client",
+    "download": "https://file.garden/auoc8y0R41ISH5sk/Goobaclient-1.21.11.jar",
+    "hub": "https://www.donutsmpclients.com",
+    "file_host_folder": "https://file.garden/auoc8y0R41ISH5sk/",
+    "discord": "https://discord.com/invite/donutsmpclients"
+  },
+  "sample": {
+    "filename": "Goobaclient-1.21.11.jar",
+    "size": 20231395,
+    "sha256": "c1e6ce561d01941eff7e696c4674dade3b5470472a13303366d4f2cf371cce27",
+    "type": "Fabric mod (Java archive)",
+    "mod_id": "white",
+    "mod_name": "Goobaa",
+    "entrypoints": {
+      "main": ["x.rc", "x.fp", "x.lz", "x.zu", "a"],
+      "client": ["x.t", "x.m2", "x.rc", "x.fp", "x.lz", "x.zu"],
+      "preLaunch": ["x.r5"]
+    }
+  },
+  "capabilities": {
+    "custom_https_client": "b.class (raw Socket, SNI, all-accepting TrustManager, DataOutputStream)",
+    "process_execution": "ProcessBuilder in a/d/h classes",
+    "reflective_class_load": "Class.forName(...).getConstructor().newInstance()",
+    "session_accessor": "m.dl setSession(net.minecraft.class_320) on class_310.field_1726",
+    "bundled_native": "win32-x86-64/discord-rpc.dll",
+    "anti_tamper": "META-INF/kuznya-integrity-target -> x/r5; class-keyed string decryption"
+  },
+  "obfuscation": {
+    "framework": "per-class encrypted String[] + invokedynamic bootstrap",
+    "string_table": "class j, String[3111]",
+    "key_table_resource": "7db0858f-8ed1-4c4b-91d3-de70fe5fddf8.bin",
+    "key_table_sha256": "3de08999788f2cef201a0287359d4f108eadfe627395e82545c04042ac1260ea"
+  },
+  "c2": {
+    "resolver": "encrypted string-table constant (not recovered statically)",
+    "endpoints": [],
+    "transport": "custom raw-socket TLS, certificate validation disabled"
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  }
+}

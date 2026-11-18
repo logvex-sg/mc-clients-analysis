@@ -1,0 +1,60 @@
+{
+  "id": "007",
+  "name": "krypton-client",
+  "title": "Krypton Client (kryptonclient-1.21.11.jar)",
+  "status": "suspected",
+  "confidence": "high",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "static-only",
+  "family": "SoberClient / DonutSMP free-client campaign",
+  "primary_impact": [
+    "credential-theft",
+    "remote-code-execution",
+    "data-exfiltration"
+  ],
+  "distribution": {
+    "hub": "https://www.donutsmpclients.com",
+    "site": "https://www.donutsmpclients.com (client id: krypton)",
+    "download": "https://file.garden/auoc8y0R41ISH5sk/kryptonclient-1.21.11.jar",
+    "file_host_folder": "https://file.garden/auoc8y0R41ISH5sk/",
+    "discord": "https://discord.com/invite/donutsmpclients"
+  },
+  "sample": {
+    "filename": "kryptonclient-1.21.11.jar",
+    "size": 6134771,
+    "sha256": "62129ddc224334f13245472ea4b206a683b3d27df4f8fd330a3bb2ddf42c6270",
+    "type": "Fabric mod (Java archive)",
+    "mod_id": "krloader",
+    "mod_name": "KrLoader",
+    "mod_version": "1.0",
+    "entrypoints": "preLaunch/main/client: [dev.krypton.diddy.DiddyEntrypoint]",
+    "class_count": 499
+  },
+  "capabilities": {
+    "all_accepting_trust_manager": "A.class",
+    "custom_https_client": "raw Socket + manual SNI + SSLContext.init(null, TrustManager[], ...)",
+    "process_execution": "ProcessBuilder",
+    "reflective_class_load": "Class.forName(...) / MethodHandles",
+    "session_accessor": "3 classes reference class_320/field_1726 (ap, tn, dev/krypton/mixin/TextVisitFactoryMixin)",
+    "native_payloads": [
+      "dev/krypton/native/x86_64-windows (2,536,385 B gzip -> 17,824,256 B Windows PE)"
+    ],
+    "anti_tamper": "root-level class-key table 41b28690-e104-4b7e-882a-cb9c114eeb6b.bin; class-keyed string decryption"
+  },
+  "obfuscation": {
+    "framework": "per-class encrypted String[] + invokedynamic bootstrap",
+    "key_table_resource": "41b28690-e104-4b7e-882a-cb9c114eeb6b.bin",
+    "key_table_sha256": "2d596a20402ee999918f41d38b477b5aad4a2da9b4be781bd3234e9cf86b5921"
+  },
+  "c2": {
+    "resolver": "encrypted string-table constant (not recovered statically)",
+    "cleartext_endpoints": [],
+    "transport": "custom raw-socket TLS, certificate validation disabled"
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  }
+}

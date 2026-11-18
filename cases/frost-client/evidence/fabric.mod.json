@@ -1,0 +1,1 @@
+{"schemaVersion":1,"id":"zenya","version":"2.0.0","name":"Frost Client","description":"Frost Client V2","environment":"client","entrypoints":{"client":["com.zenya.ZenyaClient"],"main":["e"]},"mixins":["frost.mixins.json"],"depends":{"fabricloader":"\u003e\u003d0.16.0","minecraft":"~1.21.11","java":"\u003e\u003d21"}}

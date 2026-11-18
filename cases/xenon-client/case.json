@@ -1,0 +1,60 @@
+{
+  "id": "009",
+  "name": "xenon-client",
+  "title": "Xenon Client (xenonclient-1.21.11.jar)",
+  "status": "suspected",
+  "confidence": "high",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "static-only",
+  "family": "SoberClient / DonutSMP free-client campaign",
+  "primary_impact": [
+    "credential-theft",
+    "remote-code-execution",
+    "data-exfiltration"
+  ],
+  "distribution": {
+    "hub": "https://www.donutsmpclients.com",
+    "site": "https://www.donutsmpclients.com (client id: xenon)",
+    "download": "https://file.garden/auoc8y0R41ISH5sk/xenonclient-1.21.11.jar",
+    "file_host_folder": "https://file.garden/auoc8y0R41ISH5sk/",
+    "discord": "https://discord.com/invite/donutsmpclients"
+  },
+  "sample": {
+    "filename": "xenonclient-1.21.11.jar",
+    "size": 1000405,
+    "sha256": "2eba92931cd69b0926a23e8795aef448b7541248c3f05db95fc6bfd7c75cec06",
+    "type": "Fabric mod (Java archive)",
+    "mod_id": "xenon",
+    "mod_name": "Xenon Client",
+    "mod_version": "1.0.0",
+    "entrypoints": "client: [com.xenon.XenonClient]; main: [h]",
+    "class_count": 178
+  },
+  "capabilities": {
+    "all_accepting_trust_manager": "c.class",
+    "custom_https_client": "raw Socket + manual SNI + SSLContext.init(null, TrustManager[], ...)",
+    "process_execution": "ProcessBuilder",
+    "reflective_class_load": "Class.forName(...) / MethodHandles",
+    "session_accessor": "4 classes reference class_320/field_1726 (com/xenon/e/c, ChatHudMixin, EntityMixin, c/a/d/i)",
+    "native_payloads": [],
+    "anti_tamper": "root-level class-key table fec38599-7dd1-4441-8914-3250527d7ce7.bin; class-keyed string decryption"
+  },
+  "obfuscation": {
+    "framework": "per-class encrypted String[] + invokedynamic bootstrap",
+    "key_table_resource": "fec38599-7dd1-4441-8914-3250527d7ce7.bin",
+    "key_table_sha256": "c0eeb710448995f7d47619f90e4bdb5e3f60a20d9f64043a33bfb3432388c91d"
+  },
+  "c2": {
+    "resolver": "encrypted string-table constant (not recovered statically)",
+    "cleartext_endpoints": [
+      "https://api.minecraftservices.com/minecraft/profile/lookup/name/  (com/xenon/c/a/d/i)"
+    ],
+    "transport": "custom raw-socket TLS, certificate validation disabled"
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  }
+}

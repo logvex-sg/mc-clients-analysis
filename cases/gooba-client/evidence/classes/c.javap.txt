@@ -1,0 +1,228 @@
+Compiled from "c.java"
+public class c implements javax.net.ssl.X509TrustManager {
+  public static final int a;
+
+  private static final int b;
+
+  public void checkClientTrusted(java.security.cert.X509Certificate[], java.lang.String);
+    Code:
+       0: getstatic     #16                 // Field a:I
+       3: ldc           #17                 // int -1644102206
+       5: iand
+       6: getstatic     #19                 // Field b:I
+       9: ldc           #20                 // int 554635901
+      11: ixor
+      12: ixor
+      13: istore_3
+      14: iconst_0
+      15: istore        5
+      17: goto          68
+      20: iload_3
+      21: ldc           #17                 // int -1644102206
+      23: ior
+      24: ldc           #21                 // int 570187145
+      26: ixor
+      27: istore        5
+      29: goto          33
+      32: return
+      33: iload         5
+      35: lookupswitch  { // 3
+           -1564304965: 107
+             -28138929: 120
+            1247285439: 32
+               default: 33
+          }
+      68: goto          95
+      71: iload_3
+      72: ldc           #17                 // int -1644102206
+      74: ior
+      75: ldc           #22                 // int 2104256125
+      77: ixor
+      78: istore        5
+      80: goto          33
+      83: iload_3
+      84: ldc           #17                 // int -1644102206
+      86: ior
+      87: ldc           #23                 // int -1778978951
+      89: ixor
+      90: istore        5
+      92: goto          33
+      95: iload_3
+      96: ldc           #17                 // int -1644102206
+      98: ior
+      99: ldc           #24                 // int 328655102
+     101: ixor
+     102: istore        4
+     104: goto          20
+     107: iload         4
+     109: iload         5
+     111: ldc           #25                 // int -1045010842
+     113: ixor
+     114: ixor
+     115: istore        4
+     117: goto          83
+     120: goto          71
+
+  private c();
+    Code:
+       0: getstatic     #16                 // Field a:I
+       3: ldc           #32                 // int 1119313980
+       5: iand
+       6: getstatic     #19                 // Field b:I
+       9: ldc           #33                 // int 271279700
+      11: ixor
+      12: ixor
+      13: istore_1
+      14: goto          22
+      17: aload_0
+      18: invokespecial #35                 // Method java/lang/Object."<init>":()V
+      21: return
+      22: iload_1
+      23: ldc           #32                 // int 1119313980
+      25: ior
+      26: ldc           #36                 // int 770729182
+      28: ixor
+      29: istore_2
+      30: goto          41
+      33: iload_2
+      34: ldc           #37                 // int -1744500690
+      36: ixor
+      37: istore_2
+      38: goto          17
+      41: goto          33
+
+  public void checkServerTrusted(java.security.cert.X509Certificate[], java.lang.String);
+    Code:
+       0: getstatic     #16                 // Field a:I
+       3: ldc           #39                 // int -1260501957
+       5: iand
+       6: getstatic     #19                 // Field b:I
+       9: ldc           #40                 // int -626192522
+      11: ixor
+      12: ixor
+      13: istore_3
+      14: iconst_0
+      15: istore        5
+      17: goto          72
+      20: iload_3
+      21: ldc           #39                 // int -1260501957
+      23: ior
+      24: ldc           #41                 // int 1583700507
+      26: ixor
+      27: istore        5
+      29: goto          35
+      32: goto          84
+      35: iload         5
+      37: lookupswitch  { // 3
+           -2077975335: 109
+           -1659412085: 96
+            -356796956: 32
+               default: 35
+          }
+      72: iload_3
+      73: ldc           #39                 // int -1260501957
+      75: ior
+      76: ldc           #42                 // int -1640387622
+      78: ixor
+      79: istore        4
+      81: goto          20
+      84: iload_3
+      85: ldc           #39                 // int -1260501957
+      87: ior
+      88: ldc           #43                 // int 821719846
+      90: ixor
+      91: istore        5
+      93: goto          35
+      96: return
+      97: iload_3
+      98: ldc           #39                 // int -1260501957
+     100: ior
+     101: ldc           #44                 // int 701075060
+     103: ixor
+     104: istore        5
+     106: goto          35
+     109: iload         4
+     111: iload         5
+     113: ldc           #45                 // int -369967179
+     115: ixor
+     116: ixor
+     117: istore        4
+     119: goto          97
+
+  public java.security.cert.X509Certificate[] getAcceptedIssuers();
+    Code:
+       0: getstatic     #16                 // Field a:I
+       3: ldc           #48                 // int 1847307633
+       5: iand
+       6: getstatic     #19                 // Field b:I
+       9: ldc           #49                 // int 1002826962
+      11: ixor
+      12: ixor
+      13: istore_1
+      14: iconst_0
+      15: istore_3
+      16: goto          118
+      19: iload_3
+      20: lookupswitch  { // 3
+           -1689915226: 67
+           -1208364289: 88
+            -282755523: 91
+               default: 19
+          }
+      56: iload_1
+      57: ldc           #48                 // int 1847307633
+      59: ior
+      60: ldc           #50                 // int 274371396
+      62: ixor
+      63: istore_3
+      64: goto          19
+      67: iload_2
+      68: iload_3
+      69: ldc           #51                 // int -1037139158
+      71: ixor
+      72: ixor
+      73: istore_2
+      74: goto          56
+      77: iload_1
+      78: ldc           #48                 // int 1847307633
+      80: ior
+      81: ldc           #52                 // int 626405464
+      83: ixor
+      84: istore_2
+      85: goto          96
+      88: goto          107
+      91: iconst_0
+      92: anewarray     #54                 // class java/security/cert/X509Certificate
+      95: areturn
+      96: iload_1
+      97: ldc           #48                 // int 1847307633
+      99: ior
+     100: ldc           #55                 // int 1216757638
+     102: ixor
+     103: istore_3
+     104: goto          19
+     107: iload_1
+     108: ldc           #48                 // int 1847307633
+     110: ior
+     111: ldc           #56                 // int 1681530335
+     113: ixor
+     114: istore_3
+     115: goto          19
+     118: goto          77
+
+  static {};
+    Code:
+       0: invokestatic  #63                 // Method java/lang/invoke/MethodHandles.lookup:()Ljava/lang/invoke/MethodHandles$Lookup;
+       3: invokevirtual #69                 // Method java/lang/invoke/MethodHandles$Lookup.lookupClass:()Ljava/lang/Class;
+       6: ldc           #70                 // int 2133761019
+       8: invokestatic  #75                 // Method k.a:(Ljava/lang/Class;I)I
+      11: putstatic     #19                 // Field b:I
+      14: invokestatic  #63                 // Method java/lang/invoke/MethodHandles.lookup:()Ljava/lang/invoke/MethodHandles$Lookup;
+      17: invokevirtual #69                 // Method java/lang/invoke/MethodHandles$Lookup.lookupClass:()Ljava/lang/Class;
+      20: getstatic     #19                 // Field b:I
+      23: ldc           #76                 // int -1563853604
+      25: ixor
+      26: invokestatic  #81                 // Method i.a:(Ljava/lang/Object;I)I
+      29: putstatic     #16                 // Field a:I
+      32: return
+}

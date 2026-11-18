@@ -1,0 +1,7 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | blockchain | string | file | process | registry | class
+sha256,,sample hash
+domain,,C2 or distribution domain
+url,,full URL
+file,,host file artefact
+process,,suspicious process command line

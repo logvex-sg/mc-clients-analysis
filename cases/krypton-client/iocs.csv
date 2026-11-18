@@ -1,0 +1,12 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | blockchain | string | file | process | registry | class
+sha256,62129ddc224334f13245472ea4b206a683b3d27df4f8fd330a3bb2ddf42c6270,kryptonclient-1.21.11.jar (sample)
+sha256,2d596a20402ee999918f41d38b477b5aad4a2da9b4be781bd3234e9cf86b5921,embedded class-key table 41b28690-e104-4b7e-882a-cb9c114eeb6b.bin
+sha256,eb3ad68956a92840bbfd48d853751d9f2be7a1d77ed6f60091b942bdb3bf9a26,embedded native dev/krypton/native/x86_64-windows
+sha256,42beacc88cca42ccc55a6d34314e1a6a051f42c7ee5637b627cb378d3642a5d6,embedded native dev/krypton/native/Loader.class
+file,41b28690-e104-4b7e-882a-cb9c114eeb6b.bin,root-level class-key/anti-tamper table
+class,A.class,all-accepting X509TrustManager (TLS bypass)
+domain,www.donutsmpclients.com,distribution hub
+domain,file.garden,download file host
+domain,discord.com,invite discord.com/invite/donutsmpclients
+url,https://file.garden/auoc8y0R41ISH5sk/kryptonclient-1.21.11.jar,download URL

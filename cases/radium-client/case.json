@@ -1,0 +1,62 @@
+{
+  "id": "008",
+  "name": "radium-client",
+  "title": "Radium Client (radiumclient-1.21.11.jar)",
+  "status": "suspected",
+  "confidence": "high",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "static-only",
+  "family": "SoberClient / DonutSMP free-client campaign",
+  "primary_impact": [
+    "credential-theft",
+    "remote-code-execution",
+    "data-exfiltration"
+  ],
+  "distribution": {
+    "hub": "https://www.donutsmpclients.com",
+    "site": "https://www.donutsmpclients.com (client id: radium)",
+    "download": "https://file.garden/auoc8y0R41ISH5sk/radiumclient-1.21.11.jar",
+    "file_host_folder": "https://file.garden/auoc8y0R41ISH5sk/",
+    "discord": "https://discord.com/invite/donutsmpclients"
+  },
+  "sample": {
+    "filename": "radiumclient-1.21.11.jar",
+    "size": 1074803,
+    "sha256": "a8f92a92752cc3d8b643ca9452aa86b5ba8b254ab5c69666853742c0fcf3147e",
+    "type": "Fabric mod (Java archive)",
+    "mod_id": "water",
+    "mod_name": "BETTER CHAT",
+    "mod_version": "1.0.0",
+    "entrypoints": "client: [com.water.WaterClient]; main: [d]",
+    "class_count": 172
+  },
+  "capabilities": {
+    "all_accepting_trust_manager": "g.class",
+    "custom_https_client": "raw Socket + manual SNI + SSLContext.init(null, TrustManager[], ...)",
+    "process_execution": "ProcessBuilder",
+    "reflective_class_load": "Class.forName(...) / MethodHandles",
+    "session_accessor": "6 classes reference class_320/field_1726 (w/af, w/C, w/D, w/av + ChatHudMixin/EntityMixin)",
+    "native_payloads": [],
+    "anti_tamper": "root-level class-key table a0a84a3b-8398-4eb3-a665-fb9ec67a0689.bin; class-keyed string decryption"
+  },
+  "obfuscation": {
+    "framework": "per-class encrypted String[] + invokedynamic bootstrap",
+    "key_table_resource": "a0a84a3b-8398-4eb3-a665-fb9ec67a0689.bin",
+    "key_table_sha256": "58b95f6a726a2020bf742a248de73bf71bc34423250d44ea4b5830f998475ea5"
+  },
+  "c2": {
+    "resolver": "encrypted string-table constant (not recovered statically)",
+    "cleartext_endpoints": [
+      "https://dpaste.com/api/v2/  (w/l \"Config Share\")",
+      "https://api.minecraftservices.com/minecraft/profile/lookup/name/  (w/av)",
+      "https://accounts.spotify.com / https://api.spotify.com / http://localhost:8888/callback  (w/A, w/B)"
+    ],
+    "transport": "custom raw-socket TLS, certificate validation disabled"
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  }
+}

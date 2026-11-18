@@ -1,0 +1,61 @@
+{
+  "id": "010",
+  "name": "zyron-client",
+  "title": "Zyron Client (zyronclient-1.21.11.jar)",
+  "status": "suspected",
+  "confidence": "high",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "static-only",
+  "family": "SoberClient / DonutSMP free-client campaign",
+  "primary_impact": [
+    "credential-theft",
+    "remote-code-execution",
+    "data-exfiltration"
+  ],
+  "distribution": {
+    "hub": "https://www.donutsmpclients.com",
+    "site": "https://www.donutsmpclients.com (client id: zyron-client)",
+    "download": "https://file.garden/auoc8y0R41ISH5sk/zyronclient-1.21.11.jar",
+    "file_host_folder": "https://file.garden/auoc8y0R41ISH5sk/",
+    "discord": "https://discord.com/invite/donutsmpclients"
+  },
+  "sample": {
+    "filename": "zyronclient-1.21.11.jar",
+    "size": 19258886,
+    "sha256": "7483230638024e0bd1ef0ead0fb864b77be7e908e19c7b43e2710576f332a08b",
+    "type": "Fabric mod (Java archive)",
+    "mod_id": "zyron-client",
+    "mod_name": "Zyron Client Standalone",
+    "mod_version": "1.10.1-standalone-skyarts-v11-waterproof-amethyst-esp",
+    "entrypoints": "client: [zyron.client.ZyronClientMod]; main: [b]",
+    "class_count": 228
+  },
+  "capabilities": {
+    "all_accepting_trust_manager": "c.class",
+    "custom_https_client": "raw Socket + manual SNI + SSLContext.init(null, TrustManager[], ...)",
+    "process_execution": "ProcessBuilder",
+    "reflective_class_load": "Class.forName(...) / MethodHandles",
+    "session_accessor": "1 class references class_320/field_1726 (zyron/modules/ModuleNameProtect)",
+    "native_payloads": [],
+    "anti_tamper": "root-level class-key table 760db143-3d2b-4447-bfbb-6af9306e5161.bin; class-keyed string decryption"
+  },
+  "obfuscation": {
+    "framework": "per-class encrypted String[] + invokedynamic bootstrap",
+    "key_table_resource": "760db143-3d2b-4447-bfbb-6af9306e5161.bin",
+    "key_table_sha256": "1eb9398c895ac7b721ac28bd7ac0e0d3e969cc953da28a6c8a7fc81c4f1a01c4"
+  },
+  "c2": {
+    "resolver": "encrypted string-table constant (not recovered statically)",
+    "cleartext_endpoints": [
+      "https://discord.com/api/webhooks/...  (ModuleCordSnapper, ModuleZyronSpawnerProtect)",
+      "https://i.scdn.co/image/ , https://itunes.apple.com/search , https://open.spotify.com/track/  (Spotify modules)"
+    ],
+    "transport": "custom raw-socket TLS, certificate validation disabled"
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  }
+}

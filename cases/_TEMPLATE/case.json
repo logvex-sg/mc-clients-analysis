@@ -1,0 +1,30 @@
+{
+  "id": "NNN",
+  "name": "<slug>",
+  "title": "<human-readable title>",
+  "status": "suspected",
+  "analyst": "<name>",
+  "date": "<YYYY-MM-DD>",
+  "handling": "static-only",
+  "family": "<family or campaign>",
+  "primary_impact": ["credential-theft"],
+  "distribution": {
+    "site": "",
+    "download": ""
+  },
+  "sample": {
+    "filename": "",
+    "size": 0,
+    "sha256": "",
+    "type": ""
+  },
+  "c2": {
+    "resolver": "",
+    "endpoints": []
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "id": "004",
+  "name": "corz-client",
+  "title": "Corz Client (Corzclient-1.21.11.jar)",
+  "status": "suspected",
+  "confidence": "high",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "static-only",
+  "family": "SoberClient / DonutSMP free-client campaign",
+  "primary_impact": [
+    "credential-theft",
+    "remote-code-execution",
+    "data-exfiltration"
+  ],
+  "distribution": {
+    "hub": "https://www.donutsmpclients.com",
+    "site": "https://www.donutsmpclients.com (client id: corz-client)",
+    "download": "https://file.garden/auoc8y0R41ISH5sk/Corzclient-1.21.11.jar",
+    "file_host_folder": "https://file.garden/auoc8y0R41ISH5sk/",
+    "discord": "https://discord.com/invite/donutsmpclients"
+  },
+  "sample": {
+    "filename": "Corzclient-1.21.11.jar",
+    "size": 40389435,
+    "sha256": "d307a508e6f942f42402ee417fa8e6dd367678878a7431f5eef6e8f804ab8889",
+    "type": "Fabric mod (Java archive)",
+    "mod_id": "clientcore",
+    "mod_name": "Toastyy Is Hereee",
+    "mod_version": "1.0.0",
+    "entrypoints": "client: [zr.M]; main: [d]",
+    "class_count": 1202
+  },
+  "capabilities": {
+    "all_accepting_trust_manager": "a.class",
+    "custom_https_client": "raw Socket + manual SNI + SSLContext.init(null, TrustManager[], ...)",
+    "process_execution": "ProcessBuilder",
+    "reflective_class_load": "Class.forName(...) / MethodHandles",
+    "session_accessor": "4 classes reference class_320/field_1726 (com/corz/client/{7td,7F7,11,2n})",
+    "native_payloads": [
+      "native/99571f71427e3b19/r (22,382,520 B, encrypted payload)",
+      "native/99571f71427e3b19/s1 (25,113 B, PE JNI stub: Java_a_b99571f71427e3b19_a_bootstrap/init, JNI_OnLoad)",
+      "native/99571f71427e3b19/bk (32 B, bootstrap key)",
+      "re.bin (139,368 B), ns.bin (704 B), fz.bin (8 B)"
+    ],
+    "anti_tamper": "root-level class-key table cb2aa3b5-d080-449c-94f3-911cc0b70a06.bin; class-keyed string decryption"
+  },
+  "obfuscation": {
+    "framework": "per-class encrypted String[] + invokedynamic bootstrap",
+    "key_table_resource": "cb2aa3b5-d080-449c-94f3-911cc0b70a06.bin",
+    "key_table_sha256": "5a781d8772378a94bb5efed46b5e34de51fe5b14644928c3d3f7f1ce078994bf"
+  },
+  "c2": {
+    "resolver": "encrypted string-table constant (not recovered statically)",
+    "cleartext_endpoints": [],
+    "transport": "custom raw-socket TLS, certificate validation disabled"
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  }
+}

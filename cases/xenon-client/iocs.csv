@@ -1,0 +1,12 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | blockchain | string | file | process | registry | class
+sha256,2eba92931cd69b0926a23e8795aef448b7541248c3f05db95fc6bfd7c75cec06,xenonclient-1.21.11.jar (sample)
+sha256,c0eeb710448995f7d47619f90e4bdb5e3f60a20d9f64043a33bfb3432388c91d,embedded class-key table fec38599-7dd1-4441-8914-3250527d7ce7.bin
+file,fec38599-7dd1-4441-8914-3250527d7ce7.bin,root-level class-key/anti-tamper table
+class,c.class,all-accepting X509TrustManager (TLS bypass)
+domain,www.donutsmpclients.com,distribution hub
+domain,file.garden,download file host
+domain,discord.com,invite discord.com/invite/donutsmpclients
+url,https://file.garden/auoc8y0R41ISH5sk/xenonclient-1.21.11.jar,download URL
+url,https://api.minecraftservices.com/minecraft/profile/lookup/name/,cleartext endpoint
+string,payfake-licenses.noahmenkyna667.workers.dev,licence/HWID backend (if present)

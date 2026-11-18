@@ -1,0 +1,60 @@
+{
+  "id": "006",
+  "name": "fakepay-client",
+  "title": "Fake Pay Mod (fakepayclient-1.21.11.jar)",
+  "status": "suspected",
+  "confidence": "high",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "static-only",
+  "family": "SoberClient / DonutSMP free-client campaign",
+  "primary_impact": [
+    "credential-theft",
+    "remote-code-execution",
+    "data-exfiltration"
+  ],
+  "distribution": {
+    "hub": "https://www.donutsmpclients.com",
+    "site": "https://www.donutsmpclients.com (client id: fake-pay)",
+    "download": "https://file.garden/auoc8y0R41ISH5sk/fakepayclient-1.21.11.jar",
+    "file_host_folder": "https://file.garden/auoc8y0R41ISH5sk/",
+    "discord": "https://discord.com/invite/donutsmpclients"
+  },
+  "sample": {
+    "filename": "fakepayclient-1.21.11.jar",
+    "size": 862791,
+    "sha256": "006b391bd4285f1b5ec752ca148b0ca4aa31a138a11879efd170eff3df06bcf9",
+    "type": "Fabric mod (Java archive)",
+    "mod_id": "fakeclient",
+    "mod_name": "MITTKEE ON TOP",
+    "mod_version": "1.0.0",
+    "entrypoints": "client: [com.fakeclient.FakeClient]; main: [a]",
+    "class_count": 75
+  },
+  "capabilities": {
+    "all_accepting_trust_manager": "d.class",
+    "custom_https_client": "raw Socket + manual SNI + SSLContext.init(null, TrustManager[], ...)",
+    "process_execution": "ProcessBuilder",
+    "reflective_class_load": "Class.forName(...) / MethodHandles",
+    "session_accessor": "none recovered (no class_320 accessor)",
+    "native_payloads": [],
+    "anti_tamper": "root-level class-key table 1caabd1a-b736-4053-a683-3983204df2cd.bin; class-keyed string decryption"
+  },
+  "obfuscation": {
+    "framework": "per-class encrypted String[] + invokedynamic bootstrap",
+    "key_table_resource": "1caabd1a-b736-4053-a683-3983204df2cd.bin",
+    "key_table_sha256": "a687091f1a1817da720c92be4a606af8d8ed2cef46241ed85b520b4e86087ea2"
+  },
+  "c2": {
+    "resolver": "encrypted string-table constant (not recovered statically)",
+    "cleartext_endpoints": [
+      "https://payfake-licenses.noahmenkyna667.workers.dev  (com/fakeclient/license/License.class)"
+    ],
+    "transport": "custom raw-socket TLS, certificate validation disabled"
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  }
+}

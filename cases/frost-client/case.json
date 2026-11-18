@@ -1,0 +1,56 @@
+{
+  "id": "003",
+  "name": "frost-client",
+  "title": "Frost Client / Mutyx (frostclient-1.21.11.jar)",
+  "status": "suspected",
+  "confidence": "high",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "static-only",
+  "family": "SoberClient / DonutSMP free-client campaign",
+  "primary_impact": ["remote-code-execution", "data-exfiltration", "host-reconnaissance"],
+  "distribution": {
+    "site": "https://www.donutsmpclients.com/frost-client",
+    "download": "https://file.garden/auoc8y0R41ISH5sk/frostclient-1.21.11.jar",
+    "hub": "https://www.donutsmpclients.com",
+    "file_host_folder": "https://file.garden/auoc8y0R41ISH5sk/"
+  },
+  "sample": {
+    "filename": "frostclient-1.21.11.jar",
+    "size": 6017716,
+    "sha256": "975cbb120e1c5d2d479f273af931c5a1667833ad8324470c482a06abb2181b3a",
+    "type": "Fabric mod (Java archive) + native Windows JNI agent",
+    "mod_id": "zenya",
+    "mod_name": "Frost Client",
+    "entrypoints": {"client": ["com.zenya.ZenyaClient"], "main": ["e"]}
+  },
+  "natives": [
+    {"path": "native/9a3bdf6a8e9e1b13/x86_64-windows", "size": 2602496, "sha256": "ba4cbc4ac112193a7aea3b9fbf0247a50ef4129a89b9dff3b2a42971b59c063d", "note": "native JNI/JVMTI agent, exports Java_608bbebf84695e52_b9a3bdf6a8e9e1b13_49342937c9ef478b_init, imports jvm.dll"},
+    {"path": "assets/frost/native/mutyx_client.dll", "size": 172544, "sha256": "3c3547fdb39dc73d0715c77327b1294be7500c1867724a654419699c8a43dd24", "note": "NativeClientEngine native impl"}
+  ],
+  "capabilities": {
+    "native_obfuscation": "~98 classes with native methods bound by the agent",
+    "session_protocol": "a5dca015083: sessionNew/Hello/Challenge/Encrypt/Decrypt/Message/HbResponse/Tick/Status/Entry*/BootToken/PayloadDigest/SelfDigest/ErrorMsg",
+    "websocket_c2": "a5c2d02a9be$2 java.net.http WebSocket.Listener",
+    "tls_bypass": "a5c2d02a9be$3 X509TrustManager accepts any certificate",
+    "json_parser": "a5c2d02a9be$Json (native)",
+    "process_execution": "ProcessBuilder in d/e/b classes",
+    "anti_analysis": "nativeHwid, antiDumpCheck, antiDumpState, nativePin, nativeSelfTest"
+  },
+  "obfuscation": {
+    "framework": "per-class encrypted String[] + invokedynamic bootstrap (shared with SoberClient/Gooba)",
+    "string_table": "class j, String[3149]",
+    "key_table_resources": ["5fecbcdc-b7c2-4f98-9902-09ff6bb0c1b3.bin", "043d6822-5f51-4cb2-a5a9-eec5b590d8b8.bin"],
+    "build_id": "9a3bdf6a8e9e1b13"
+  },
+  "c2": {
+    "resolver": "encrypted native constant (not recovered statically)",
+    "endpoints": [],
+    "transport": "Java WebSocket over TLS with certificate validation disabled"
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  }
+}

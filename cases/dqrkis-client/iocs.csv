@@ -1,0 +1,10 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | blockchain | string | file | process | registry | class
+sha256,63acd66b84fe93afeb496d144de6bba05d19b7325be3862f693726f73a6bd712,dqrkisclient-1.21.11.jar (sample)
+sha256,c46f6c9850ed081e3adda0e200ae983b80bc10775bc418a34c5af0c26a6ec3bd,embedded class-key table 26b2622c-11d1-4b7b-acae-c178bf87cc6e.bin
+file,26b2622c-11d1-4b7b-acae-c178bf87cc6e.bin,root-level class-key/anti-tamper table
+class,d.class,all-accepting X509TrustManager (TLS bypass)
+domain,www.donutsmpclients.com,distribution hub
+domain,file.garden,download file host
+domain,discord.com,invite discord.com/invite/donutsmpclients
+url,https://file.garden/auoc8y0R41ISH5sk/dqrkisclient-1.21.11.jar,download URL

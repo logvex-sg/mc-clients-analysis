@@ -1,0 +1,1 @@
+{"required":false,"package":"zyron.mixin.freecam","compatibilityLevel":"JAVA_21","client":["FreecamCameraMixin","FreecamClientPlayerEntityMixin","FreecamEntityMixin","FreecamPlayerEntityMixin","MouseHandlerMixin","MouseMixin"],"injectors":{"defaultRequire":0}}

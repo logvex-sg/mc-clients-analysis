@@ -1,0 +1,16 @@
+.class	894
+.json	265
+.png	191
+.pcm	116
+[no extension]	73
+.fsh	45
+.glsl	34
+.ttf	29
+.ogg	24
+.mcmeta	14
+.vsh	8
+.glb	3
+.txt	2
+.mf	1
+.md	1
+.ps1	1

@@ -1,0 +1,21 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | blockchain | string | file | process | registry | class
+sha256,c1e6ce561d01941eff7e696c4674dade3b5470472a13303366d4f2cf371cce27,Goobaclient-1.21.11.jar (sample)
+sha256,3de08999788f2cef201a0287359d4f108eadfe627395e82545c04042ac1260ea,embedded class-key table 7db0858f-8ed1-4c4b-91d3-de70fe5fddf8.bin
+sha256,ad683f7ae2c912ef502fd802f256094fceaa238260115caaefb1913a13abd5e2,embedded win32-x86-64/discord-rpc.dll
+domain,www.donutsmpclients.com,distribution hub
+domain,file.garden,download file host
+domain,discord.com,invite discord.com/invite/donutsmpclients
+url,https://www.donutsmpclients.com/gooba-client,landing page
+url,https://file.garden/auoc8y0R41ISH5sk/Goobaclient-1.21.11.jar,download URL
+url,https://file.garden/auoc8y0R41ISH5sk/,shared folder hosting 9 client jars
+file,7db0858f-8ed1-4c4b-91d3-de70fe5fddf8.bin,class-key table at JAR root
+file,META-INF/kuznya-integrity-target,anti-tamper marker -> x/r5.class
+file,win32-x86-64/discord-rpc.dll,bundled native library
+class,j,string table + invokedynamic bootstrap + decryptor
+class,i,class-key state machine (FNV-1a)
+class,k,anti-tamper (SHA-256 of class bytes)
+class,b,custom HTTPS client (raw socket + manual SNI)
+class,c,all-accepting X509TrustManager (TLS verification disabled)
+class,m.dl,setSession(class_320) accessor on Minecraft client
+string,x/r5,preLaunch entrypoint named by integrity marker
