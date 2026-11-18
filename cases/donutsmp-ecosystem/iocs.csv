@@ -1,0 +1,10 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | blockchain | string | file | process | registry | class
+# SOURCE: OSINT (public repositories). Context map, not a malware verdict.
+url,https://github.com/pushykiller69-bot/exordium-client,legitimate feature-set twin (fake pay/scoreboard/spawner/name spoofer)
+url,https://github.com/realnnpg/glazed,DonutSMP Meteor Client addon (context)
+url,https://www.donutsmpclients.com,Cluster-A lure hub (see cases 001-010)
+string,fake pay,feature vocabulary reused by lures
+string,fake scoreboard,feature vocabulary reused by lures
+string,name spoofer,feature vocabulary reused by lures
+string,panic mode,feature vocabulary reused by lures

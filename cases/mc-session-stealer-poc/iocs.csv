@@ -1,0 +1,10 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | blockchain | string | file | process | registry | class
+# SOURCE: OSINT (shurp3/MC-Session-Stealer, cev-api/Token-Protector). Not independently verified.
+url,https://discord.com/api/webhooks/,exfiltration channel used by the PoC
+url,https://ipapi.co/json,victim geo-location lookup (PoC)
+class,net.minecraft.util.Session,stolen object (Session.getToken)
+class,net.minecraft.client.Minecraft,entry to reach the live Session
+string,session.getToken(),the theft call
+string,modid = "Minecraft",disguise used by the PoC mod
+string,TokenProtector,defensive counterpart (token sanitiser)

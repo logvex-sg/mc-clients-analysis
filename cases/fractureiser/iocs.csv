@@ -1,0 +1,17 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | blockchain | string | file | process | registry | class
+# SOURCE: OSINT (public fractureiser research + clrxbl/NekoClient). Not independently verified.
+url,https://files-8ie.pages.dev/,Stage-2/Stage-3 delivery host (reported)
+ip,85.217.144.130,reported C2
+ip,111.90.150.186,reported C2
+ip,107.189.3.101,reported C2
+class,dev/neko/nekoclient/api/stealer/browser/impl/BrowserDataStealer,Stage-3 browser stealer
+class,dev/neko/nekoclient/api/stealer/browser/impl/decrypt/chrome/ChromeDecryptor,Chrome credential decryptor
+class,dev/neko/nekoclient/api/stealer/browser/impl/decrypt/mozilla/MozillaDecryptor,Firefox credential decryptor
+class,dev/neko/nekoclient/api/stealer/discord/impl/DiscordStealer,Discord token stealer
+class,dev/neko/nekoclient/api/stealer/msa/impl/MSAStealer,Microsoft/Minecraft account stealer
+class,dev/neko/nekoclient/module/impl/CryptoClipperModule,crypto wallet clipper
+class,dev/neko/nekoclient/api/windows/vmescape/VMEscape,VM/sandbox escape
+class,dev/neko/nekoinjector/template/impl/FabricModTemplate,worm re-infection template
+class,dev/neko/nekoinjector/template/impl/SpigotPluginTemplate,worm re-infection template
+string,dev/neko/nekoclient,Stage-3 package namespace

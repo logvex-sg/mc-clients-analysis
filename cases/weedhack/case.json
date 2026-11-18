@@ -1,0 +1,65 @@
+{
+  "id": "011",
+  "name": "weedhack",
+  "title": "Weedhack Stealer (Minecraft session/credential stealer + staged RAT)",
+  "status": "confirmed-malicious",
+  "confidence": "high",
+  "verification": "osint-only (public sources; not independently re-verified)",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "osint-only; no sample obtained or executed",
+  "family": "Weedhack",
+  "primary_impact": [
+    "credential-theft",
+    "remote-access-trojan",
+    "remote-code-execution",
+    "data-exfiltration"
+  ],
+  "distribution": {
+    "vector": "trojanised Minecraft Fabric mod (.jar)",
+    "hub": "unknown (delivered via mod sites / Discord)"
+  },
+  "sample": {
+    "filename": null,
+    "sha256": null,
+    "note": "no sample obtained; documented from public research"
+  },
+  "capabilities": {
+    "session_token_theft": true,
+    "browser_credential_theft": "reported",
+    "keylogger": "KeyLoggingHandler (Socket.IO exfil)",
+    "screen_share": "WebSocket, WebP encoded",
+    "webcam": "WebSocket stream, ~25 FPS",
+    "persistence": "scheduled task JavaSecurityUpdater; HKCU Run; VBScript launcher",
+    "av_evasion": "Add-MpPreference -ExclusionPath 'C:\\Users'",
+    "privilege_escalation": "ShellExecute runas (UAC bypass)",
+    "blockchain_c2": "Ethereum RPC fallback, selector 0xce6d41de, RSA-signed config"
+  },
+  "obfuscation": {
+    "framework": "JNIC + custom string encryption",
+    "string_algorithm": "interleave-xor-rotate-substitute",
+    "keys": [187, 67],
+    "loader_classes": ["dev.jnic.BSOMwJ", "dev.jnic.fwcMeR", "dev.jnic.lXpXvp"],
+    "v4_plus": "Greek-unicode entrypoints, in-memory payload, ClassLoader abuse"
+  },
+  "c2": {
+    "domains": ["receiver.cy", "weedhack.cy"],
+    "urls": [
+      "https://receiver.cy/files/jar/module",
+      "https://receiver.cy/files/jar/component",
+      "https://receiver.cy/api/component/lastModified"
+    ],
+    "blockchain": {
+      "function_selector": "0xce6d41de",
+      "rsa_public_key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtmNzDf4737/iYWvscWg6vQg9dHa/yUchfQY9r5htNTLZ3ZDAbqrzN93I0ctZHa27oRnkpB7XpowI4NH8eIRmaMThggpTYRXzHzLvUjhyrFFPkIOo/HI1gZF5IV7/XmvYWqgEsSpxl0iesOUlaWO5A8QlTu0QLsZAzZtzZyLj/v1XbPT02rTvZkuRhE6nzpUR4GN3Jp4Bn8zQAWdFDe17PWZxOi19uUTMPzgFj9n3h7DprwBmE3fR7IMsbiFacAoSHfqkTpEwY7A8ArK1DQ1yJXPog/PQ4aTU9gU38WC20wtct796ImZiuRYdNWcSzHda5ZbvZdvpw6RHh0zQqGVhRQIDAQAB"
+    }
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  },
+  "sources": [
+    "https://github.com/0xresetti/Weedhack-Remover"
+  ]
+}

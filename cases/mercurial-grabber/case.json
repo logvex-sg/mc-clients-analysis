@@ -1,0 +1,46 @@
+{
+  "id": "013",
+  "name": "mercurial-grabber",
+  "title": "Mercurial Grabber (multi-target infostealer with Minecraft session module)",
+  "status": "confirmed-malicious",
+  "confidence": "high",
+  "verification": "osint-only (public repositories; not independently re-verified)",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "osint-only; no sample obtained or executed",
+  "family": "Mercurial Grabber",
+  "primary_impact": [
+    "credential-theft",
+    "session-token-theft",
+    "data-exfiltration"
+  ],
+  "distribution": {
+    "vector": "standalone infostealer payload + builder (post-exploitation)",
+    "targets": ["minecraft", "browsers", "discord", "messaging apps"]
+  },
+  "sample": {
+    "filename": null,
+    "sha256": null,
+    "note": "no sample obtained; documented from public repositories"
+  },
+  "capabilities": {
+    "minecraft_session_theft": true,
+    "browser_credential_theft": true,
+    "discord_token_theft": true,
+    "exfiltration": "Discord webhook / Telegram"
+  },
+  "c2": {
+    "resolver": "configurable (webhook / bot token baked into the build)",
+    "cleartext_endpoints": []
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  },
+  "sources": [
+    "https://github.com/DayfallGT/NightfallGT",
+    "https://github.com/Tysoefy/Mercurial-Grabber1",
+    "https://github.com/Spofxyy/Mercurial.Grabber.v1.03"
+  ]
+}

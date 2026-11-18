@@ -1,0 +1,41 @@
+{
+  "id": "015",
+  "name": "donutsmp-ecosystem",
+  "title": "DonutSMP client ecosystem (OSINT context map)",
+  "status": "mixed",
+  "confidence": "medium",
+  "verification": "osint-only (public repositories; context only, not a malware verdict)",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "osint-only; no sample obtained or executed",
+  "family": "DonutSMP client ecosystem",
+  "primary_impact": [
+    "context"
+  ],
+  "legitimate_equivalents": {
+    "exordium-client": {
+      "url": "https://github.com/pushykiller69-bot/exordium-client",
+      "features": ["fake pay", "fake scoreboard", "fake spawner visuals", "name spoofer", "panic mode"],
+      "note": "feature-set twin of Cluster-A fakepay/zyron lures"
+    },
+    "glazed": {
+      "url": "https://github.com/realnnpg/glazed",
+      "note": "Meteor Client addon for DonutSMP"
+    }
+  },
+  "lure_pattern": [
+    "landing page / Discord advertises a free client",
+    "download hosted on a third-party file host (not Modrinth/CurseForge/GitHub releases)",
+    "obfuscated JAR with TLS-bypass trust manager and Session accessor",
+    "works well enough to spread while stealing the session token"
+  ],
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  },
+  "sources": [
+    "https://github.com/pushykiller69-bot/exordium-client",
+    "https://github.com/realnnpg/glazed"
+  ]
+}

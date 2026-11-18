@@ -1,0 +1,26 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | blockchain | string | file | process | registry | class
+# SOURCE: OSINT (0xresetti/Weedhack-Remover and public reporting). Not independently verified.
+domain,receiver.cy,Weedhack C2
+domain,weedhack.cy,Weedhack C2
+url,https://receiver.cy/files/jar/module,stage payload fetch
+url,https://receiver.cy/files/jar/component,stage payload fetch
+url,https://receiver.cy/api/component/lastModified,C2 config check
+blockchain,0xce6d41de,Ethereum RPC C2 function selector
+file,%APPDATA%\Microsoft\SecurityUpdates,persistence directory
+file,%APPDATA%\Microsoft\SecurityUpdates\SecurityInfo.json,config
+file,%APPDATA%\Microsoft\SecurityUpdates\Updater.vbs,VBScript launcher
+file,%APPDATA%\Microsoft\SecurityUpdates\component-*.jar,dropped component
+file,%TEMP%\lib*.tmp,temp payload
+process,schtasks /Create /TN "JavaSecurityUpdater" /SC ONLOGON /RL HIGHEST,scheduled-task persistence
+registry,HKCU\Software\Microsoft\Windows\CurrentVersion\Run,run-key persistence
+string,Add-MpPreference -ExclusionPath 'C:\Users',Defender exclusion (AV evasion)
+string,me/mclauncher/LoaderClient,loader class
+string,me/mclauncher/MEntrypoint,entrypoint class
+string,dev/majanito/Main,RAT main
+string,dev/jnic/BSOMwJ,JNIC loader variant
+string,dev/jnic/fwcMeR,JNIC loader variant (RAT)
+string,dev/jnic/lXpXvp,JNIC loader variant
+string,KeyLoggingHandler,keylogger module
+string,WebcamShareHandler,webcam module
+string,ScreenShareHandler,screen-share module

@@ -30,6 +30,20 @@ Cases 001–010 are one campaign ("DonutSMP Clients", `donutsmpclients.com` → 
 hosted JARs (cases 002–010) have been analysed. See [cases/CAMPAIGN.md](cases/CAMPAIGN.md) for the
 consolidated report.
 
+## OSINT cases (public threat families, no sample held)
+
+| ID | Case | Status | Report |
+|----|------|--------|--------|
+| 011 | Weedhack Stealer | confirmed-malicious (public) | [cases/weedhack/REPORT.md](cases/weedhack/REPORT.md) |
+| 012 | fractureiser (CurseForge 2023) | confirmed-malicious (public) | [cases/fractureiser/REPORT.md](cases/fractureiser/REPORT.md) |
+| 013 | Mercurial Grabber | confirmed-malicious (public) | [cases/mercurial-grabber/REPORT.md](cases/mercurial-grabber/REPORT.md) |
+| 014 | Session-stealer mod PoCs / kits | proof-of-concept | [cases/mc-session-stealer-poc/REPORT.md](cases/mc-session-stealer-poc/REPORT.md) |
+| 015 | DonutSMP client ecosystem | mixed (context) | [cases/donutsmp-ecosystem/REPORT.md](cases/donutsmp-ecosystem/REPORT.md) |
+
+Cases 011–015 were written from **public research** (no sample obtained or executed) and are
+**not independently re-verified**. See [cases/OSINT.md](cases/OSINT.md) for how they relate to the
+DonutSMP campaign.
+
 ## Rules of engagement
 
 - **No execution of samples on this machine.** Static analysis and read-only network checks only,

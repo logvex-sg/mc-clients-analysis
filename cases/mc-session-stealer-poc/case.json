@@ -1,0 +1,35 @@
+{
+  "id": "014",
+  "name": "mc-session-stealer-poc",
+  "title": "Minecraft session-stealer mod PoCs / kits (attack primitive reference)",
+  "status": "proof-of-concept",
+  "confidence": "high",
+  "verification": "osint-only (public PoC source read directly; not executed)",
+  "analyst": "OpenHands",
+  "date": "2026-11-18",
+  "handling": "osint-only; source read, not executed",
+  "family": "MC session-stealer primitive",
+  "primary_impact": [
+    "session-token-theft",
+    "credential-theft"
+  ],
+  "primitive": {
+    "read": "Minecraft.getMinecraft().getSession() -> Session.getToken()/getUsername()/getPlayerID()",
+    "exfil": "HTTP POST to a Discord webhook (also saved-server list, IP geo via ipapi.co)",
+    "disguise": "declares modid='Minecraft', name='Minecraft' to look benign in logs"
+  },
+  "defensive_counterpart": {
+    "name": "TokenProtector",
+    "url": "https://github.com/cev-api/Token-Protector",
+    "purpose": "sanitises Minecraft access token against in-JVM theft by other mods"
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  },
+  "sources": [
+    "https://github.com/shurp3/MC-Session-Stealer",
+    "https://github.com/cev-api/Token-Protector"
+  ]
+}

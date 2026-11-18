@@ -33,6 +33,8 @@ tools/                 <- shared analysis scripts (deobfuscators, parsers)
 
 ## Index
 
+### Cluster A — DonutSMP "free client" campaign (samples held locally)
+
 | ID | Case | Status | Primary impact | Date | Report |
 |----|------|--------|----------------|------|--------|
 | 001 | SoberClient | confirmed-malicious | credential-theft, RCE, exfiltration | 2026-11-18 | [cases/soberclient/REPORT.md](soberclient/REPORT.md) |
@@ -45,6 +47,21 @@ tools/                 <- shared analysis scripts (deobfuscators, parsers)
 | 008 | Radium Client | suspected (high) | credential-theft, config exfiltration, PowerShell | 2026-11-18 | [cases/radium-client/REPORT.md](radium-client/REPORT.md) |
 | 009 | Xenon Client | suspected (high) | credential-theft, RCE, exfiltration | 2026-11-18 | [cases/xenon-client/REPORT.md](xenon-client/REPORT.md) |
 | 010 | Zyron Client | suspected (high) | credential-theft, webhook exfiltration, RCE | 2026-11-18 | [cases/zyron-client/REPORT.md](zyron-client/REPORT.md) |
+
+### Cluster B — OSINT threat families (no sample held; documented from public research)
+
+| ID | Case | Status | Primary impact | Date | Report |
+|----|------|--------|----------------|------|--------|
+| 011 | Weedhack Stealer | confirmed-malicious (public) | session/credential theft, RAT, RCE | 2026-11-18 | [cases/weedhack/REPORT.md](weedhack/REPORT.md) |
+| 012 | fractureiser (CurseForge 2023) | confirmed-malicious (public) | RCE, staged payload, credential theft | 2026-11-18 | [cases/fractureiser/REPORT.md](fractureiser/REPORT.md) |
+| 013 | Mercurial Grabber | confirmed-malicious (public) | session/browser credential theft | 2026-11-18 | [cases/mercurial-grabber/REPORT.md](mercurial-grabber/REPORT.md) |
+| 014 | Session-stealer mod PoCs / kits | tooling / proof-of-concept | session-token theft | 2026-11-18 | [cases/mc-session-stealer-poc/REPORT.md](mc-session-stealer-poc/REPORT.md) |
+| 015 | DonutSMP client ecosystem (OSINT) | mixed (research) | n/a — ecosystem map | 2026-11-18 | [cases/donutsmp-ecosystem/REPORT.md](donutsmp-ecosystem/REPORT.md) |
+
+> **Cluster B caveat:** these cases were written from **public, third-party research and
+> repositories** (OSINT), not from samples we analysed. No Cluster-B sample was downloaded or
+> executed. Verdicts are attributed to their original sources and are **not independently
+> re-verified** by this project.
 
 ## Campaign notes
 
@@ -74,7 +91,8 @@ class-keyed `.bin` tables). Common infrastructure:
   client; most expose a Minecraft `Session` accessor (`class_320`/`field_1726`).
 - **Three** bundle the **jvmtp** JVM native protector (a JNI stub that `System.load`s an encrypted
   bytecode blob): Corz (004), Krypton (007), Frost (003).
-- See `CAMPAIGN.md` for the consolidated cross-case report.
+- See `CAMPAIGN.md` for the consolidated cross-case report and `OSINT.md` for how Cluster B
+  relates to Cluster A.
 
 ## Conventions
 
@@ -83,5 +101,6 @@ class-keyed `.bin` tables). Common infrastructure:
 - Record the **SHA-256** of every artefact as received, before any transformation.
 - Keep the report verdict-first and evidence-anchored: every behavioural claim should trace to a
   decoded string, an API call site, or an observed network response.
+- Cluster-B (OSINT) cases must state their source and must not claim independent verification.
 - Update the project memory (`.openhands/memory/`) with durable findings and reuse `tools/`
   scripts across cases of the same family.

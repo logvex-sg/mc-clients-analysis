@@ -1,0 +1,10 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | blockchain | string | file | process | registry | class
+# SOURCE: OSINT (public Mercurial Grabber repositories). Not independently verified. Hashes drift per build.
+file,%TEMP%\,grabber output staging
+file,Login Data,browser credential database (target)
+file,Cookies,browser cookie database (target)
+file,Local State,browser master-key file (target)
+file,launcher_accounts.json,Minecraft launcher session/token store (target)
+string,webhook,exfiltration channel (Discord)
+string,Mercurial Grabber,family name
