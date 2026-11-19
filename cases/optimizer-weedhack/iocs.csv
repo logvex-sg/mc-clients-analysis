@@ -1,0 +1,27 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | string | file | process | registry | class
+# SOURCE: OSINT (d3xondev/optimizer-malware-analysis). Not independently verified.
+ip,31.59.106.34,C2 direct IP (AS56971 Riga LV)
+domain,weedhack.lol,operator panel
+domain,remote.weedhack.lol,panel API
+domain,api.devnet.solana.com,dead-drop RPC (devnet)
+domain,api.ipify.org,public IP lookup
+string,BCy1eKppGB5WPmQ8PrSJT4gkMRy5HmzsuaVrnqef7zoV,Solana dead-drop wallet
+url,http://31.59.106.34/api/downloads/jre.zip,private JRE download (plain HTTP)
+url,http://31.59.106.34/api/downloads/st.jar,stage-1 download (plain HTTP)
+url,http://31.59.106.34/api/rpc,registration + exfil endpoint
+ip,104.253.43.109,Solana memo (unused)
+ip,95.182.116.120,Solana memo (unused)
+ip,31.59.175.15,Solana memo (unused)
+ip,95.182.96.216,Solana memo (unused)
+file,%LOCALAPPDATA%\Microsoft\AppBroker\,"staging dir (fake Microsoft component)"
+file,%LOCALAPPDATA%\Microsoft\AppBroker\output\ssid.txt,harvested launcher account tokens
+file,%LOCALAPPDATA%\Microsoft\AppBroker\error.log,"defender-exclusion log (preserve for IR)"
+file,%LOCALAPPDATA%\Microsoft\AppBroker\client_id.txt,operator client identifier
+file,%LOCALAPPDATA%\Microsoft\AppBroker\capture.zip,exfil archive
+process,AppCaller.exe all,collection component
+process,dllhost.exe <key>,"fake dllhost (masquerade)"
+string,Add-MpPreference -ExclusionPath,Defender exclusion command
+string,MSFT_MpPreference.Add,WMI fallback for exclusion
+string,com.optimizer.OptimizerMod::init,preLaunch entrypoint
+string,preLaunch,executes before game window

@@ -37,7 +37,7 @@ tools/                 <- shared analysis scripts (deobfuscators, parsers)
 
 | ID | Case | Status | Primary impact | Date | Report |
 |----|------|--------|----------------|------|--------|
-| 001 | SoberClient | confirmed-malicious | credential-theft, RCE, exfiltration | 2026-11-18 | [cases/soberclient/REPORT.md](soberclient/REPORT.md) |
+| 001 | SoberClient | **confirmed-malicious — SilentNet build** | session-token theft, RCE, exfiltration | 2026-11-19 | [cases/soberclient/REPORT.md](soberclient/REPORT.md) |
 | 002 | Gooba Client | suspected (high) | credential-theft, RCE, exfiltration | 2026-11-18 | [cases/gooba-client/REPORT.md](gooba-client/REPORT.md) |
 | 003 | Frost Client (Mutyx) | suspected (high) | RCE, staged payload delivery, host recon | 2026-11-18 | [cases/frost-client/REPORT.md](frost-client/REPORT.md) |
 | 004 | Corz Client | suspected (high) | credential-theft, RCE, exfiltration, native protector | 2026-11-18 | [cases/corz-client/REPORT.md](corz-client/REPORT.md) |
@@ -65,6 +65,9 @@ tools/                 <- shared analysis scripts (deobfuscators, parsers)
 | 021 | OAuth / Microsoft-token grabbers | confirmed-malicious (public, source) | account takeover, refresh-token persistence | 2026-11-18 | [cases/oauth-token-grabbers/REPORT.md](oauth-token-grabbers/REPORT.md) |
 | 022 | Server backdoor tooling | dual-use tooling | plugin/client backdoor, RCE | 2026-11-18 | [cases/mc-backdoor-plugins/REPORT.md](mc-backdoor-plugins/REPORT.md) |
 | 023 | Defensive ecosystem (scanners/hardening) | defensive tooling | detection & hardening | 2026-11-18 | [cases/anti-rat-defenses/REPORT.md](anti-rat-defenses/REPORT.md) |
+| 024 | SilentNet stealer (Zig loader → Fabric mod) | confirmed-malicious | session theft, Polygon dead-drop C2 | 2026-11-19 | [cases/silentnet-stealer/REPORT.md](silentnet-stealer/REPORT.md) |
+| 025 | Exastealer v1.0 (ElriaGame.exe) | confirmed-malicious (public, hashes) | browser/wallet/Discord theft, ICMLuaUtil UAC bypass | 2026-11-19 | [cases/exastealer-elriagame/REPORT.md](exastealer-elriagame/REPORT.md) |
+| 026 | Optimizer / Weedhack (Fabric mod) | confirmed-malicious | session+refresh token theft, Defender exclusion, RAT | 2026-11-19 | [cases/optimizer-weedhack/REPORT.md](optimizer-weedhack/REPORT.md) |
 
 > **Cluster B caveat:** these cases were written from **public, third-party research and
 > repositories** (OSINT), not from samples we analysed. No Cluster-B sample was downloaded or
@@ -101,6 +104,32 @@ class-keyed `.bin` tables). Common infrastructure:
   bytecode blob): Corz (004), Krypton (007), Frost (003).
 - See `CAMPAIGN.md` for the consolidated cross-case report and `OSINT.md` for how Cluster B
   relates to Cluster A.
+
+## Cross-campaign infrastructure — the SilentNet / Polygon dead-drop family
+
+Cases **001**, **024** and **026** are the same operator or the same codebase. They are linked by
+constants that only the operator controls, so a match is proof of common authorship:
+
+| Constant | 001 SoberClient | 024 SilentNet | 026 Optimizer |
+|---|---|---|---|
+| Polygon contract | `0x9c0a5073…ff9a` | same | — |
+| `eth_call` selector | `0xce6d41de` | same | — |
+| Fallback host | `thisisafalsepositive.st` | same | — |
+| CDN path | `/cdn/v2/9f4e7a2c1b8d.png` | same | — |
+| Shards | `/shard/prefireMc`, `/shard/submitMinecraftLog` | same | — |
+| Dead-drop chain | Polygon | Polygon | **Solana devnet** |
+| Persistence | `Microsoft\NtProfileIndex` | same name | `Microsoft\AppBroker` |
+| Stage-2 | `jre-embedded`/`AppHost`/`main.py` | same | `st.jar` → `AppCaller.exe` |
+
+**Blockchain dead-drop C2 now spans three chains** in this database: Ethereum (016), Polygon
+(001/024) and Solana (026). The technique is the same: put the C2 address in a cheap on-chain
+transaction and read it with a public RPC, so the C2 can be rotated without re-releasing malware and
+no domain needs to exist that could be seized.
+
+A fourth common trait is **rebranding**: SoberClient (001) and SilentNet (024) share a backend but
+carry different campaign UUIDs, and each is presented as a distinct "client" on its own site. Treat
+any newly-discovered Minecraft client that queries a public RPC endpoint with `eth_call` as a
+suspected member of this family.
 
 ## Conventions
 

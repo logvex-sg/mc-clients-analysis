@@ -1,13 +1,17 @@
 {
   "id": "001",
   "name": "soberclient",
-  "title": "SoberClient — Minecraft utility client with bundled account stealer",
+  "title": "SoberClient \u2014 Minecraft utility client with bundled account stealer",
   "status": "confirmed-malicious",
   "analyst": "OpenHands",
   "date": "2026-11-18",
   "handling": "static-only; no execution",
-  "family": "SoberClient",
-  "primary_impact": ["credential-theft", "remote-code-execution", "data-exfiltration"],
+  "family": "SilentNet (case 024) - rebranded build",
+  "primary_impact": [
+    "credential-theft",
+    "remote-code-execution",
+    "data-exfiltration"
+  ],
   "distribution": {
     "site": "https://soberclient.xyz/",
     "download": "https://mxbqrtnpmoaqoaqpvpvg.supabase.co/storage/v1/object/public/downloads/SoberClient.jar?download"
@@ -22,11 +26,80 @@
     "resolver": "Polygon eth_call dead-drop",
     "contract": "0x9c0a507300fd902787bb193d80fca5ce6e1bff9a",
     "fallback_domain": "thisisafalsepositive.st",
-    "endpoints": ["/shard/prefireMc", "/shard/submitMinecraftLog"]
+    "endpoints": [
+      "/shard/prefireMc",
+      "/shard/submitMinecraftLog"
+    ],
+    "selector": "0xce6d41de",
+    "cdn_path": "/cdn/v2/9f4e7a2c1b8d.png",
+    "rpc_rotation": [
+      "https://polygon.drpc.org",
+      "https://polygon-bor-rpc.publicnode.com",
+      "https://1rpc.io/matic",
+      "https://api.zan.top/polygon-mainnet",
+      "https://rpc-mainnet.matic.quiknode.pro"
+    ],
+    "doh": "https://cloudflare-dns.com/dns-query (via 1.1.1.1)"
   },
   "files": {
     "report": "REPORT.md",
     "iocs": "iocs.csv",
     "evidence_dir": "evidence/"
-  }
+  },
+  "confidence": "very-high",
+  "verification": "first-hand static analysis of javap bytecode + full string deobfuscation; not executed",
+  "linked_cases": [
+    "024 SilentNet (identical C2 constants)",
+    "026 Optimizer/Weedhack",
+    "016 EtherHiding",
+    "001-010 DonutSMP campaign"
+  ],
+  "family_match": {
+    "family": "SilentNet",
+    "identical_constants": 5,
+    "items": [
+      "polygon contract 0x9c0a507300fd902787bb193d80fca5ce6e1bff9a",
+      "selector 0xce6d41de",
+      "host thisisafalsepositive.st",
+      "cdn /cdn/v2/9f4e7a2c1b8d.png",
+      "shards /shard/prefireMc + /shard/submitMinecraftLog"
+    ]
+  },
+  "structure": {
+    "decoy": {
+      "package": "dev.sober",
+      "classes": 886,
+      "note": "genuine cheat client; zero references to payload"
+    },
+    "payload": {
+      "package": "net.fabric",
+      "classes": 8,
+      "bytes": 126682,
+      "pct_of_jar": 0.39
+    }
+  },
+  "capabilities": {
+    "session_theft": "reflective MinecraftClient.getSession -> username + accessToken + UUID",
+    "trust_manager": "X509TrustManager.checkServerTrusted body is empty (accepts any cert)",
+    "raw_tls_client": "net.fabric.sajxwzz hand-built HTTP/1.1 over raw socket",
+    "steganography": "stage-2 payload embedded in PNG",
+    "browser_masquerade": "Chrome/131 UA, Accept image/*, Sec-Fetch-Dest: image",
+    "unresolved": "assets/sober/media/bridge.ps1 (11691 bytes, unreferenced PowerShell)"
+  },
+  "mitre_attack": [
+    "T1204.002",
+    "T1036.005",
+    "T1027",
+    "T1140",
+    "T1102.001",
+    "T1071.001",
+    "T1573",
+    "T1557",
+    "T1105",
+    "T1027.003",
+    "T1547.001",
+    "T1528",
+    "T1539",
+    "T1059.001"
+  ]
 }

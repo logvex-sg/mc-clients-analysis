@@ -1,0 +1,48 @@
+{
+  "id": "025",
+  "name": "exastealer-elriagame",
+  "title": "Exastealer v1.0 (ElriaGame.exe) — Electron-wrapper Java stealer with ICMLuaUtil UAC bypass",
+  "status": "confirmed-malicious",
+  "confidence": "high",
+  "verification": "osint-only (third-party static analysis with published hashes; not independently re-verified)",
+  "analyst": "OpenHands",
+  "date": "2026-11-19",
+  "handling": "osint-only; no binary obtained or executed",
+  "family": "Exastealer v1.0 (Turkish-speaking MaaS cluster)",
+  "primary_impact": ["credential-theft", "wallet-theft", "discord-token-theft", "persistence", "privilege-escalation"],
+  "sample": {
+    "filename": "ElriaGame.exe",
+    "size_bytes": 146758741,
+    "sha256": "319acc0f884b20f8c36c03912996c98f7860abf99d39e7492775c0320ae9e00d",
+    "type": "NSIS SFX wrapping Electron app",
+    "payload": {"file": "emre.jar", "size_bytes": 42593204, "sha256": "33f0ac160b6807c7e70015a148ac4ddfe89341c7a8b8454234afc3c3b2060712"},
+    "native_shim": {"file": "peynir.dll", "sha256": "9ec1331b90ce86a584320e9922a4fd1ed5afc2dce884d3ea8189c57026b8c9f7"}
+  },
+  "delivery": {
+    "stages": ["NSIS SFX", "app-64.7z (electron-builder)", "app.asar/launcher1.js (4-layer b64+subtract+XOR)", "data.7z (7zAES, password 7zgw3s6kxCZi)", "emre.jar + jre.zip"],
+    "decoder": "b[i] = ((b[i] - rot - i) ^ key[(i+rot) % keylen]) & 0xFF"
+  },
+  "capabilities": {
+    "chromium_master_key": "DPAPI CryptUnprotectData + NCrypt unwrap (JNA)",
+    "browser_dbs": "direct SQLite reads",
+    "firefox": "NSS PK11SDR_Decrypt",
+    "wallets_browser_extensions": 61,
+    "wallets_desktop": 48,
+    "steam": true,
+    "discord_token": "harvested then validated live",
+    "uac_bypass": "COM elevation moniker CMSTPLUA/ICMLuaUtil vtable+0x48 ShellExec"
+  },
+  "persistence": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\emre -> javaw -jar %LOCALAPPDATA%\\emre\\emre.jar --startup",
+  "c2": {
+    "ip": "52.249.219.108",
+    "port": 3001,
+    "scheme": "http",
+    "routes": ["/api/validate-tokens", "/api/discord-injection/<KEY>", "/api/internal/log"],
+    "build_key": "PANEL-XSER-YZ76-YFMK",
+    "discord_validation": ["https://discord.com/api/v10/users/@me", "https://canary.discord.com/api/v9/users/@me"]
+  },
+  "mitre_attack": ["T1204.002","T1036.005","T1027","T1140","T1547.001","T1555.003","T1555.005","T1539","T1528","T1550.001","T1548.002","T1071.001","T1041"],
+  "linked_cases": ["024 SilentNet (same Turkish-speaking cluster)", "001-010 DonutSMP campaign"],
+  "files": {"report": "REPORT.md", "iocs": "iocs.csv", "evidence_dir": "evidence/"},
+  "sources": ["https://github.com/fire/elriagame-exastealer-analysis"]
+}

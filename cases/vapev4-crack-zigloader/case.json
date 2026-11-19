@@ -1,0 +1,47 @@
+{
+  "id": "028",
+  "name": "vapev4-crack-zigloader",
+  "title": "vapev4_cracked.exe — cracked-cheat lure carrying a Zig stage-0 loader and 242 KB encrypted payload",
+  "status": "confirmed-malicious",
+  "confidence": "high (loader) / payload inferred from SilentNet toolchain match",
+  "verification": "first-hand static analysis of a real sample obtained from a public GitHub repo; NOT executed",
+  "analyst": "OpenHands",
+  "date": "2026-11-19",
+  "handling": "static-only; sample never executed",
+  "family": "SilentNet-family Zig loader (cheat-crack lure)",
+  "primary_impact": ["loader", "embedded-stage2", "credential-theft-likely", "c2"],
+  "sample": {
+    "filename": "vapev4_cracked.exe",
+    "size_bytes": 1139712,
+    "sha256": "01e6f28b64fe0d598686cbc0f48125d389bdab93bc6b5359026a1d50ec713579",
+    "type": "PE32+ x86-64 native, Zig 0.12.1",
+    "source_repo": "https://github.com/ksppk216-design/vapev4_crack"
+  },
+  "evidence": {
+    "compiler": "zig 0.12.1 (user-agent: zig/, std.http error enums, Zig panic handler)",
+    "embedded_payload": {
+      "offset": "0xCEC00-0x10A000",
+      "size_bytes": 242688,
+      "entropy": 8.0,
+      "encrypted": true,
+      "decrypted": false
+    },
+    "plaintext_c2": null,
+    "imports": [
+      "VirtualAlloc", "VirtualFree", "CreateProcessW", "WriteFile", "ReadFile",
+      "MoveFileW", "RegOpenKeyExA", "RegQueryValueExA", "GetSystemInfo",
+      "GlobalMemoryStatusEx", "GetDiskFreeSpaceExW", "GetTickCount64",
+      "GetFileAttributesW", "WSASocketW", "WSAStartup", "getaddrinfo", "connect",
+      "closesocket", "CertOpenSystemStoreW", "SystemFunction036",
+      "SetEnvironmentVariableA"
+    ],
+    "absent": ["GUI", "JVM/Java", "game rendering"]
+  },
+  "linked_cases": ["024 SilentNet (same Zig 0.12.1 loader design)"],
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  },
+  "sources": ["https://github.com/ksppk216-design/vapev4_crack"]
+}

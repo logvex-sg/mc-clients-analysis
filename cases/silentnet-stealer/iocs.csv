@@ -1,0 +1,32 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | string | file | process | registry | class
+# SOURCE: OSINT (Mekverberk/silentnet-stealer-analysis). Not independently verified.
+sha256,79420c6623177c1d48fb87b6e32c0cd06f3360fce406037506872b9b1b535006,"Launcher.exe (stage 0, Zig 0.12.1)"
+sha256,9ae06f129d04f63a639b48d6d293f5e89079614cbb22d042c203bb0843e81944,mod.jar (stage 1/2 Fabric)
+sha256,548ffea3467f9a2984e247edc3dc3e5c5be9fad507cc3fc1c23b6b3826a12c7a,"AppHost\app.pyd (stage 2 Nuitka)"
+string,0x9c0a507300fd902787bb193d80fca5ce6e1bff9a,Polygon dead-drop contract
+string,0xce6d41de,eth_call selector
+domain,thisisafalsepositive.st,CDN host fallback (from contract)
+url,https://thisisafalsepositive.st/cdn/5ef451455923,stage-2 CDN path
+url,https://thisisafalsepositive.st/cdn/e/42a522313d92,stage-2 CDN path
+url,https://thisisafalsepositive.st/cdn/e/36f2c0035ef9,stage-2 CDN path
+string,x-cdn-origin-verify,origin auth header (managed service)
+string,dK9mT3nR7xQ2pL8wF4jH6yB1cN5gA0sZ12345678abc=,origin auth secret
+string,fa357567-049b-426b-96ec-7d8488629333,campaign UUID
+class,net.fabric.ArKZkARk,obfuscated class (fabric-lookalike)
+class,net.fabric.readIglpzeg,obfuscated class (fabric-lookalike)
+registry,Microsoft\Windows\NtProfileIndex,"persistence key (mimics Windows)"
+string,PYTHONDONTWRITEBYTECODE,no .pyc artefacts
+url,https://www.python.org/ftp/python/3.12.7/python-3.12.7-embed-amd64.zip,abused trusted CDN
+url,https://bootstrap.pypa.io/get-pip.py,abused trusted CDN
+string,Intel Core Processor (Broadwell),anti-VM CPU check
+domain,polygon-rpc.com,Polygon RPC rotation
+domain,rpc-mainnet.matic.quiknode.pro,Polygon RPC rotation
+domain,polygon-public.nodies.app,Polygon RPC rotation
+domain,1rpc.io,Polygon RPC rotation
+domain,polygon-bor-rpc.publicnode.com,Polygon RPC rotation
+domain,api.zan.top,Polygon RPC rotation
+domain,polygon.rpc.subquery.network,Polygon RPC rotation
+domain,endpoints.omniatech.io,Polygon RPC rotation
+string,/shard/prefireMc,API shard
+string,/shard/submitMinecraftLog,API shard

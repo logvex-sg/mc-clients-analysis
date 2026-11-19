@@ -1,0 +1,53 @@
+{
+  "id": "029",
+  "name": "larpclient-clean",
+  "title": "LarpClient 2.3.1 — clean cheat client (negative control)",
+  "status": "not-malicious",
+  "confidence": "high",
+  "verification": "first-hand full-JAR static review of a real sample; NOT executed",
+  "analyst": "OpenHands",
+  "date": "2026-11-19",
+  "handling": "static-only; sample never executed",
+  "family": "commercial Minecraft cheat client",
+  "primary_impact": ["none-detected"],
+  "sample": {
+    "filename": "LarpClient-1.21.11-2.3.1-recovered.jar",
+    "size_bytes": 19282759,
+    "sha256": "8caea2f11daa6ae5ce0ac74f0135c9b17d050f3e23341b5d8799810e80f5b58e",
+    "mod_id": "larp-client",
+    "version": "2.3.1",
+    "entries": 2164,
+    "source_repo": "https://github.com/Recte-Development/larpclient-deobfuscated"
+  },
+  "outbound_hosts": {
+    "larpclient.com": 6,
+    "sessionserver.mojang.com": 3,
+    "api.mojang.com": 2,
+    "api.minecraftservices.com": 2,
+    "api.donutsmp.net": 2,
+    "cdn.discordapp.com": 2,
+    "lrclib.net": 2,
+    "textures.minecraft.net": 1
+  },
+  "benign_explanations": {
+    "accessToken": "user pastes their own token; used only for api.minecraftservices.com profile",
+    "AES": "AES/GCM/NoPadding encrypts the user's own saved accounts at rest",
+    "keychain": "macOS kSecClassGenericPassword / Linux libsecret stores the vault key",
+    "ProcessBuilder": "launches playerctl for Spotify HUD",
+    "hwid": "local identifier; f.class redacts secrets before config sharing"
+  },
+  "absent_campaign_signatures": [
+    "all-accepting X509TrustManager",
+    "raw-socket TLS client",
+    "root-level <uuid>.bin string tables",
+    "META-INF/kuznya-integrity-target",
+    "discord webhook / unknown C2",
+    "entropy-8 encrypted blobs"
+  ],
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  },
+  "sources": ["https://github.com/Recte-Development/larpclient-deobfuscated"]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "026",
+  "name": "optimizer-weedhack",
+  "title": "Optimizer / Weedhack — Fabric mod stub with Solana dead-drop C2, Defender exclusion and RAT stage",
+  "status": "confirmed-malicious",
+  "confidence": "high",
+  "verification": "osint-only (third-party static analysis, 2026-11-15; not independently re-verified)",
+  "analyst": "OpenHands",
+  "date": "2026-11-19",
+  "handling": "osint-only; no binary obtained or executed",
+  "family": "Weedhack (Minecraft stealer + RAT panel)",
+  "primary_impact": ["session-token-theft", "refresh-token-theft", "cookie-theft", "defense-evasion", "remote-access"],
+  "sample": {
+    "stage0": {"file": "optimizer_1794778622855.jar", "size_bytes": 4565, "type": "Fabric mod (preLaunch only)"},
+    "stage1": {"file": "st.jar", "size_bytes": 1888639}
+  },
+  "delivery": {
+    "entrypoint": "preLaunch com.optimizer.OptimizerMod::init",
+    "mixins": 0,
+    "author": "System",
+    "staging_dir": "%LOCALAPPDATA%\\Microsoft\\AppBroker"
+  },
+  "credentials_targeted": [
+    "%APPDATA%\\.minecraft\\launcher_accounts.json",
+    "%APPDATA%\\.minecraft\\launcher_profiles.json",
+    "%APPDATA%\\.lunarclient\\settings\\game\\accounts.json",
+    "%APPDATA%\\.feather\\accounts.json"
+  ],
+  "c2": {
+    "direct_ip": "31.59.106.34",
+    "asn": "AS56971 (Riga, LV)",
+    "panel": "weedhack.lol",
+    "api": "remote.weedhack.lol",
+    "dead_drop": {"blockchain": "solana-devnet", "rpc": "https://api.devnet.solana.com", "wallet": "BCy1eKppGB5WPmQ8PrSJT4gkMRy5HmzsuaVrnqef7zoV"},
+    "routes": ["/api/downloads/jre.zip", "/api/downloads/st.jar", "/api/rpc"]
+  },
+  "evasion": {
+    "defender_exclusion": "Add-MpPreference -ExclusionPath 'C:\\Users' (fallback: WMI MSFT_MpPreference.Add via Add-Type)",
+    "masquerading": ["dllhost.exe in %LOCALAPPDATA%", "Microsoft\\AppBroker fake dir"],
+    "elevation": "unbounded Start-Process -Verb RunAs loop (1/s) - no bypass"
+  },
+  "second_stage": {"components": ["AppCaller.exe all", "caller.dll", "dllhost.exe <key>"], "exfil": "capture.zip base64 in JSON to /api/rpc"},
+  "mitre_attack": ["T1204.002","T1036.005","T1036.008","T1102.001","T1071.001","T1105","T1059.001","T1562.001","T1548.002","T1528","T1555.003","T1005","T1041"],
+  "linked_cases": ["024 SilentNet (Polygon dead-drop)", "016 EtherHiding (Ethereum dead-drop)"],
+  "files": {"report": "REPORT.md", "iocs": "iocs.csv", "evidence_dir": "evidence/"},
+  "sources": ["https://github.com/d3xondev/optimizer-malware-analysis"]
+}

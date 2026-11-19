@@ -1,0 +1,29 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | string | file | process | registry | class
+# SOURCE: OSINT (fire/elriagame-exastealer-analysis). Not independently verified.
+sha256,319acc0f884b20f8c36c03912996c98f7860abf99d39e7492775c0320ae9e00d,"ElriaGame.exe (NSIS SFX, 146758741 bytes)"
+sha256,eade28260b381d60087d3f6d045990dd1465cb329ff06882b480a01edbddbabc,"$PLUGINSDIR/app-64.7z (electron-builder)"
+sha256,33f0ac160b6807c7e70015a148ac4ddfe89341c7a8b8454234afc3c3b2060712,"emre.jar (Exastealer, 42593204 bytes)"
+sha256,9ec1331b90ce86a584320e9922a4fd1ed5afc2dce884d3ea8189c57026b8c9f7,emre.jar!/peynir.dll
+ip,52.249.219.108,C2 host (port 3001)
+url,http://52.249.219.108:3001/api/validate-tokens,key + discord token validation
+url,http://52.249.219.108:3001/api/discord-injection/,discord renderer injection callback
+url,http://52.249.219.108:3001/api/internal/log,progress logging
+url,https://discord.com/api/v10/users/@me,stolen token validation (legit API abused)
+url,https://canary.discord.com/api/v9/users/@me,canary token validation
+string,PANEL-XSER-YZ76-YFMK,build key (PLhWEEjyn.ENCRYPTED_KEY)
+string,7zgw3s6kxCZi,data.7z archive password
+file,%LOCALAPPDATA%\emre\emre.jar,installed payload
+file,%LOCALAPPDATA%\emre\jre.zip,private JRE
+file,%LOCALAPPDATA%\emre\data.7z,staged encrypted payload
+file,%LOCALAPPDATA%\emre\data_helper.exe,renamed 7za.exe
+file,%TEMP%\launcher_debug.log,dropper log (never deleted)
+file,%TEMP%\.startup_mode,startup marker
+registry,HKCU\Software\Microsoft\Windows\CurrentVersion\Run\emre,persistence
+string,_HIDDEN_MARKER,hidden relaunch marker
+string,_RESTART_COUNT,restart budget env var
+string,Elevation:Administrator!new:{3E5FC7F9-9A51-4367-9063-A120244FBEC7},UAC bypass moniker
+string,{6EDD6D74-C007-4E75-B76A-E5740995E24C},ICMLuaUtil IID
+string,{3E5FC7F9-9A51-4367-9063-A120244FBEC7},CMSTPLUA CLSID
+string,PK11SDR_Decrypt,Firefox NSS credential decrypt
+string,CryptUnprotectData,DPAPI master key unwrap

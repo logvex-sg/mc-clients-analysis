@@ -1,0 +1,14 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | string | file | process | registry | class
+# SOURCE: first-hand static analysis of a real sample (obtained 2026-11-19). NOT executed.
+sha256,86151e9f7438f0d593a8834c1f610da1cda3763229ce26e7bda59530e120890c,harshmodV11.exe (outer SFX)
+url,https://github.com/ResolvingRU/minecraft-cheat-1.16.5-1.19.2-,"delivery repo (SEO-bait, 2 files)"
+file,%TEMP%\harshmodV9.exe,dropped and auto-executed payload (encrypted in archive)
+string,Setup=harshmodV9.exe,SFX script directive (auto-run)
+string,Path=%temp%,SFX script directive (extract to temp)
+string,Silent=1,SFX script directive (no UI)
+string,Overwrite=1,SFX script directive
+string,Update=U,SFX script directive
+string,D:\Projects\WinRAR\SFX\build\sfxrar64\Release\sfxrar.pdb,WinRAR SFX stub build path
+string,IDS_WRONGPASSWORD,SFX password prompt resource
+string,;Расположенный ниже комментарий содержит команды SFX-сценария,russian SFX script comment

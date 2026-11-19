@@ -22,3 +22,16 @@ class,net.fabric.YnjcXePczS,jar Main-Class (malicious launcher)
 class,net.fabric.grsq_myprv_xx_bdxy,dropper/loader
 class,net.fabric.sajxwzz,custom HTTP client + trust-all TLS
 class,net.fabric.lpt_twqemj,Minecraft session token thief
+string,0x9c0a507300fd902787bb193d80fca5ce6e1bff9a,Polygon dead-drop contract (identical to SilentNet 024)
+string,0xce6d41de,eth_call selector (identical to SilentNet 024)
+domain,polygon.drpc.org,Polygon RPC rotation
+domain,polygon-bor-rpc.publicnode.com,Polygon RPC rotation
+domain,1rpc.io,Polygon RPC rotation
+domain,api.zan.top,Polygon RPC rotation
+domain,rpc-mainnet.matic.quiknode.pro,Polygon RPC rotation
+domain,cloudflare-dns.com,DoH C2 resolution
+string,/shard/prefireMc,beacon shard
+string,/shard/submitMinecraftLog,exfil shard
+file,%LOCALAPPDATA%\Microsoft\NtProfileIndex,fabricated MS dir (persistence/staging)
+asset,assets/sober/media/bridge.ps1,unreferenced PowerShell asset (11691 bytes)
+header,X-Runtime-Env,custom C2 header

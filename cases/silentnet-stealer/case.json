@@ -1,0 +1,41 @@
+{
+  "id": "024",
+  "name": "silentnet-stealer",
+  "title": "SilentNet — multi-stage Minecraft stealer (Zig loader, Fabric mod, Nuitka Python, Polygon dead-drop)",
+  "status": "confirmed-malicious",
+  "confidence": "high",
+  "verification": "osint-only (full source-level deobfuscation published; hashes published; not independently re-verified)",
+  "analyst": "OpenHands",
+  "date": "2026-11-19",
+  "handling": "osint-only; no binary obtained or executed",
+  "family": "SilentNet (MaaS, Weedhack-adjacent)",
+  "campaign_id": "fa357567-049b-426b-96ec-7d8488629333",
+  "primary_impact": ["session-token-theft", "credential-theft", "persistence", "remote-code-execution"],
+  "targets": ["Minecraft Fabric", "Lunar Client", "Feather", "Modrinth", "Chrome", "Edge", "Opera GX", "Discord", "Steam", "Riot", "Roblox"],
+  "stages": [
+    {"stage": 0, "file": "Launcher.exe", "type": "PE32+ x86-64 Zig 0.12.1", "sha256": "79420c6623177c1d48fb87b6e32c0cd06f3360fce406037506872b9b1b535006"},
+    {"stage": "1/2", "file": "mod.jar", "type": "JAR Fabric/standalone", "sha256": "9ae06f129d04f63a639b48d6d293f5e89079614cbb22d042c203bb0843e81944"},
+    {"stage": 2, "file": "AppHost\\app.pyd", "type": "PE32+ DLL Nuitka", "sha256": "548ffea3467f9a2984e247edc3dc3e5c5be9fad507cc3fc1c23b6b3826a12c7a"}
+  ],
+  "capabilities": {
+    "anti_vm": "CPU==Intel Core Processor (Broadwell), >=6 cores, RAM/disk, GetTickCount64",
+    "config_crypto": "XOR plain[i]=cipher[i]^key[i & 0x0f] (16-byte repeating key)",
+    "c2_resolution": "Polygon eth_call dead-drop + DoH",
+    "payload_hosts": ["python.org (embeddable 3.12.7)", "bootstrap.pypa.io"],
+    "persistence": "HKCU registry, Microsoft\\Windows\\NtProfileIndex",
+    "stealth": "PYTHONDONTWRITEBYTECODE, Chrome/120 UA"
+  },
+  "c2": {
+    "blockchain": {"network": "polygon-mainnet", "contract": "0x9c0a507300fd902787bb193d80fca5ce6e1bff9a", "selector": "0xce6d41de"},
+    "rpc_urls": ["polygon-rpc.com", "rpc-mainnet.matic.quiknode.pro", "polygon-public.nodies.app", "1rpc.io/matic", "polygon-bor-rpc.publicnode.com", "api.zan.top/polygon-mainnet", "polygon.rpc.subquery.network/public", "endpoints.omniatech.io/v1/matic/mainnet/public"],
+    "host_fallback": "thisisafalsepositive.st",
+    "cdn_paths": ["/cdn/5ef451455923", "/cdn/e/42a522313d92", "/cdn/e/36f2c0035ef9", "/cdn/v2/9f4e7a2c1b8d.png"],
+    "api_shards": ["/shard/prefireMc", "/shard/submitMinecraftLog"],
+    "origin_header": "x-cdn-origin-verify",
+    "origin_secret": "dK9mT3nR7xQ2pL8wF4jH6yB1cN5gA0sZ12345678abc="
+  },
+  "mitre_attack": ["T1204.002","T1036.005","T1027","T1497.001","T1102.001","T1071.001","T1573","T1105","T1547.001","T1528","T1555.003","T1539","T1005"],
+  "linked_cases": ["028 vapev4_cracked.exe (same Zig loader)", "016 EtherHiding (Ethereum variant)", "026 Optimizer (Weedhack, Solana)"],
+  "files": {"report": "REPORT.md", "iocs": "iocs.csv", "evidence_dir": "evidence/"},
+  "sources": ["https://github.com/Mekverberk/silentnet-stealer-analysis"]
+}

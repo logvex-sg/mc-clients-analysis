@@ -1,0 +1,14 @@
+type,value,context
+# type = sha256 | md5 | domain | url | ip | string | file | process | registry | class
+# SOURCE: first-hand static analysis. CLEAN NEGATIVE CONTROL - these are BENIGN indicators.
+sha256,8caea2f11daa6ae5ce0ac74f0135c9b17d050f3e23341b5d8799810e80f5b58e,LarpClient-1.21.11-2.3.1-recovered.jar
+url,https://github.com/Recte-Development/larpclient-deobfuscated,source repo
+url,https://larpclient.com,vendor site (6 refs)
+url,https://sessionserver.mojang.com/session/minecraft/join,normal Minecraft login handshake
+url,https://cdn.discordapp.com,image CDN only (NOT discord.com/api/webhooks)
+url,https://lrclib.net,lyrics API for music HUD
+url,https://api.donutsmp.net/v1/auction/list/,public auction-price API
+string,secret_password_store_sync,libsecret keychain (benign: OS keychain)
+string,kSecClassGenericPassword,macOS keychain
+string,AES/GCM/NoPadding,benign: encrypts local account vault
+string,Remove unsafe or authentication fields before sharing,secret redaction (opposite of stealer)

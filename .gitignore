@@ -1,3 +1,10 @@
 .openhands/
 __pycache__/
 *.pyc
+
+# Samples are never committed (hashes only, see cases/*/evidence/HASHES.txt)
+raw/
+*.jar
+*.exe
+*.dll
+*.zip

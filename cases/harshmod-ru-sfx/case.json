@@ -1,0 +1,38 @@
+{
+  "id": "027",
+  "name": "harshmod-ru-sfx",
+  "title": "harshmodV11.exe — Russian-language silent SFX dropper with password-protected payload",
+  "status": "confirmed-malicious",
+  "confidence": "high (dropper behaviour) / payload unknown (encrypted)",
+  "verification": "first-hand static analysis of a real sample obtained from a public GitHub repo; NOT executed",
+  "analyst": "OpenHands",
+  "date": "2026-11-19",
+  "handling": "static-only; sample never executed",
+  "family": "Russian Minecraft cheat dropper (SFX + encrypted payload)",
+  "primary_impact": ["dropper", "av-evasion", "unknown-payload-execution"],
+  "sample": {
+    "filename": "harshmodV11.exe",
+    "size_bytes": 1313676,
+    "sha256": "86151e9f7438f0d593a8834c1f610da1cda3763229ce26e7bda59530e120890c",
+    "type": "PE32+ x86-64 WinRAR SFX (RAR5 embedded at 0x75C00)",
+    "source_repo": "https://github.com/ResolvingRU/minecraft-cheat-1.16.5-1.19.2-"
+  },
+  "dropper": {
+    "script_language": "russian",
+    "path": "%temp%",
+    "setup": "harshmodV9.exe",
+    "silent": 1,
+    "overwrite": 1,
+    "payload_size_bytes": 834048,
+    "payload_encrypted": true,
+    "password_recovered": false
+  },
+  "files": {
+    "report": "REPORT.md",
+    "iocs": "iocs.csv",
+    "evidence_dir": "evidence/"
+  },
+  "sources": [
+    "https://github.com/ResolvingRU/minecraft-cheat-1.16.5-1.19.2-"
+  ]
+}

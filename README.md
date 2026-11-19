@@ -1,9 +1,9 @@
-# malware-analysis-SOBERCLIENT
+# mc-clients-analysis
 
 Malware analysis case files. Current focus: **Minecraft account stealers** (Minecraft/Microsoft
 session-token theft, browser credential grabbers, server-plugin backdoors, and the droppers/loaders
-that deliver them). 23 cases: 10 analysed from local samples (Cluster A) and 13 written from public
-OSINT (Cluster B).
+that deliver them). **33 cases**: 14 analysed first-hand from samples or bytecode (Cluster A) and 19
+written from public OSINT (Cluster B).
 
 ## Layout
 
@@ -17,7 +17,7 @@ tools/     shared analysis scripts (deobfuscators, parsers)
 
 | ID | Case | Status | Report |
 |----|------|--------|--------|
-| 001 | SoberClient | confirmed-malicious | [cases/soberclient/REPORT.md](cases/soberclient/REPORT.md) |
+| 001 | SoberClient | **confirmed-malicious — SilentNet build** | [cases/soberclient/REPORT.md](cases/soberclient/REPORT.md) |
 | 002 | Gooba Client | suspected (high) | [cases/gooba-client/REPORT.md](cases/gooba-client/REPORT.md) |
 | 003 | Frost Client (Mutyx) | suspected (high) | [cases/frost-client/REPORT.md](cases/frost-client/REPORT.md) |
 | 004 | Corz Client | suspected (high) | [cases/corz-client/REPORT.md](cases/corz-client/REPORT.md) |
@@ -49,10 +49,39 @@ consolidated report.
 | 021 | OAuth / Microsoft-token grabbers | confirmed-malicious (public, source) | [cases/oauth-token-grabbers/REPORT.md](cases/oauth-token-grabbers/REPORT.md) |
 | 022 | Server backdoor tooling | dual-use tooling | [cases/mc-backdoor-plugins/REPORT.md](cases/mc-backdoor-plugins/REPORT.md) |
 | 023 | Defensive ecosystem (scanners/hardening) | defensive tooling | [cases/anti-rat-defenses/REPORT.md](cases/anti-rat-defenses/REPORT.md) |
+| 024 | SilentNet stealer (Zig loader → Fabric mod) | confirmed-malicious | [cases/silentnet-stealer/REPORT.md](cases/silentnet-stealer/REPORT.md) |
+| 025 | Exastealer v1.0 (ElriaGame.exe) | confirmed-malicious (public, hashes) | [cases/exastealer-elriagame/REPORT.md](cases/exastealer-elriagame/REPORT.md) |
+| 026 | Optimizer / Weedhack (Fabric mod) | confirmed-malicious | [cases/optimizer-weedhack/REPORT.md](cases/optimizer-weedhack/REPORT.md) |
 
-Cases 011–023 were written from **public research** (no sample obtained or executed) and are
+Cases 011–026 were written from **public research** (no sample obtained or executed) and are
 **not independently re-verified**. See [cases/OSINT.md](cases/OSINT.md) for how they relate to the
 DonutSMP campaign.
+
+## Key finding — one backend behind many "brands"
+
+Cases **001**, **024** and **026** are the same operation. They share operator-chosen constants
+(a Polygon contract, an `eth_call` selector, a fallback domain and CDN path), so the match is proof
+of common authorship rather than resemblance:
+
+- **SoberClient** (001) and **SilentNet** (024) are byte-identical on **five** independent constants
+  (`0x9c0a5073…ff9a`, `0xce6d41de`, `thisisafalsepositive.st`, `/cdn/v2/9f4e7a2c1b8d.png`,
+  `/shard/prefireMc` + `/shard/submitMinecraftLog`). They differ only in campaign UUID — i.e. one
+  codebase resold under two names.
+- **Optimizer** (026) uses the same pattern on a different chain (Solana devnet) with the same
+  fake-Microsoft staging-directory trick.
+
+Blockchain dead-drop C2 now appears on **three chains** in this set: Ethereum (016), Polygon
+(001/024), Solana (026). The purpose is the same each time — rotate C2 without re-releasing the
+malware, and without owning a domain that can be seized.
+
+## The "it works, so it's not malware" fallacy
+
+The most common defence of these clients is that the cheat features genuinely work. They often do.
+SoberClient is the clearest example: 886 classes of real cheat code, and 8 classes (0.39 % of the
+file) of SilentNet stealer. **No cheat class references the payload.** The stealer is wired in
+through Fabric's `main` entrypoint and the JAR manifest, so it runs on every launch regardless of
+which cheat features the user touches. A functional client is the delivery mechanism, not evidence
+of good faith.
 
 ## Rules of engagement
 

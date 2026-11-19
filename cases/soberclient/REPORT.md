@@ -280,12 +280,49 @@ See `iocs.csv` in this folder for the machine-readable list. Key items:
 
 ---
 
+## 9.1 Family attribution — this is **SilentNet** (case 024)
+
+Cross-referencing the decoded constants against [case 024](../silentnet-stealer/REPORT.md) gives a
+**five-way exact match**. These are not similar values; they are byte-identical:
+
+| Artefact | SoberClient (001) | SilentNet (024) | |
+|---|---|---|---|
+| Polygon contract | `0x9c0a507300fd902787bb193d80fca5ce6e1bff9a` | same | identical |
+| `eth_call` selector | `0xce6d41de` | same | identical |
+| Fallback host | `thisisafalsepositive.st` | same | identical |
+| CDN path | `/cdn/v2/9f4e7a2c1b8d.png` | same | identical |
+| API shards | `/shard/prefireMc`, `/shard/submitMinecraftLog` | same | identical |
+| Persistence dir | `Microsoft\NtProfileIndex` | `Microsoft\Windows\NtProfileIndex` | same name |
+| Staging | `jre-embedded`, `AppHost`, `main.py` | `jre-embedded`, `AppHost\app.pyd` | same layout |
+
+A shared contract address, function selector, fallback domain and CDN path cannot arise by
+coincidence: they are chosen by the operator. **SoberClient is a rebranded SilentNet build** with its
+own campaign UUID (`4b33001c-a943-448a-bbd6-f01cf4d51040`) but the same backend. Any detection
+written for SilentNet covers this sample, and vice versa.
+
+This also resolves part of §11: the stage-2 stealer is the SilentNet portable-Python component, so
+its capability set should be read from case 024 (browser credentials, cookies, wallets, Discord
+tokens) rather than treated as unknown.
+
+## 9.2 Unresolved artefact — `bridge.ps1`
+
+`assets/sober/media/bridge.ps1` is an **11,691-byte PowerShell script shipped inside the mod's
+assets**. No Java class references it (the string `bridge.ps1` appears nowhere in the 383,975-line
+disassembly), and its content was not included in the RE package.
+
+A PowerShell script in a cheat mod's asset folder has no legitimate purpose. It is either
+(a) a stage the operator runs manually, (b) dead weight from a template, or (c) delivered to a
+second stage that reconstructs the path. **Its behaviour is unknown and it is the single largest
+open question in this case** — it should be extracted from the original jar before any closure.
+
 ## 10. Evidence & artefacts
 
 | Path | Description |
 |---|---|
 | `SoberClient_RE_analysis.zip` | Original static RE package as received |
 | `evidence/BYTECODE_DISASSEMBLY.txt` | Full `javap` disassembly (383,975 lines) |
+| `evidence/decoded-strings.tsv` | All payload strings recovered by abstract interpretation |
+| `evidence/payload-inventory.tsv` | Sizes of the eight `net.fabric.*` payload classes |
 | `evidence/ARCHIVE_INVENTORY.tsv` | Archive entry listing with sizes |
 | `evidence/CLASS_NAMES.txt` | All 894 class names |
 | `evidence/fabric.mod.json` | Mod metadata / entrypoints |
